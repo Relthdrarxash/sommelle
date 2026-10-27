@@ -6,6 +6,28 @@ Application Android d'accompagnement à l'insomnie fondée sur la TCC-I (thérap
 
 Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et il ne remplace pas un avis médical.
 
+## Aperçu
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/captures/accueil.png" width="220" alt="Accueil : fenêtre de sommeil, coucher 0 h 30 et lever 6 h 45, bouton Remplir ma nuit"><br>Accueil</td>
+    <td align="center"><img src="docs/captures/agenda_heure.png" width="220" alt="Agenda guidé : heure du coucher en grand avec deux boutons moins 15 et plus 15 minutes"><br>Agenda guidé</td>
+    <td align="center"><img src="docs/captures/agenda_estimation.png" width="220" alt="Agenda guidé : grandes pastilles pour estimer le temps d'endormissement"><br>Estimations</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/captures/agenda_resume.png" width="220" alt="Agenda résumé : toute la nuit sur une carte, chaque ligne modifiable"><br>Agenda résumé</td>
+    <td align="center"><img src="docs/captures/bilan.png" width="220" alt="Bilan de la semaine : phrase de synthèse, nouvelle fenêtre et graphique temps au lit et temps dormi"><br>Bilan de la semaine</td>
+    <td align="center"><img src="docs/captures/nuit.png" width="220" alt="Écran de nuit presque noir aux tons chauds, trois consignes et un bouton"><br>Je n'arrive pas à dormir</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/captures/bienvenue.png" width="220" alt="Écran de bienvenue du questionnaire d'entrée"><br>Bienvenue</td>
+    <td align="center"><img src="docs/captures/questionnaire.png" width="220" alt="Question du questionnaire d'entrée avec deux grands boutons Oui et Non"><br>Questionnaire</td>
+    <td align="center"><img src="docs/captures/accueil_nuit.png" width="220" alt="Accueil en thème de nuit, sombre et chaud"><br>Thème de nuit</td>
+  </tr>
+</table>
+
+Ces captures sont générées automatiquement à partir du code des écrans à chaque modification (voir [CONTRIBUTING.md](CONTRIBUTING.md)) : elles sont toujours à jour.
+
 ## État
 
 | Module | Contenu | État |

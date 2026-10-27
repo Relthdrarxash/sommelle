@@ -4,5 +4,8 @@ local.properties
 .idea/
 *.iml
 .DS_Store
-captures/
+/captures/
 .kotlin/
+
+# Captures brutes de Paparazzi : seules celles de docs/captures sont conservées.
+screenshots/src/test/snapshots/

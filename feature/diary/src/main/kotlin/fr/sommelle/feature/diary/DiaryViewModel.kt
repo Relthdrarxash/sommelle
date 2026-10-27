@@ -28,10 +28,25 @@ data class DiaryState(
     val blockingIssue: DiaryIssue? = null,
 )
 
+/** Actions de l'agenda, séparées du ViewModel pour afficher l'écran sans données réelles. */
+interface DiaryActions {
+    override fun shift(field: TimeField, minutes: Long)
+    override fun sleepOnset(minutes: Long)
+    override fun awakeningCount(count: Int)
+    override fun awakeMinutes(minutes: Long)
+    override fun quality(value: SleepQuality)
+    override fun next(onSaved: () -> Unit)
+    override fun back(): Boolean
+    override fun editFromSummary(step: DiaryStep)
+    override fun guidedFromStart()
+    override fun dismissIssue()
+    override fun save(onSaved: () -> Unit)
+}
+
 class DiaryViewModel(
     private val repository: SommelleRepository,
     private val nightOf: LocalDate,
-) : ViewModel() {
+) : ViewModel(), DiaryActions {
 
     private val _state = MutableStateFlow<DiaryState?>(null)
     val state: StateFlow<DiaryState?> = _state.asStateFlow()
