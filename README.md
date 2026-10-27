@@ -1,5 +1,7 @@
 # Sommelle
 
+[![CI](https://github.com/Relthdrarxash/Sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Relthdrarxash/Sommelle/actions/workflows/ci.yml)
+
 Application Android d'accompagnement à l'insomnie fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie). Gratuite, en français, sans compte, et 100 % locale : aucune donnée ne quitte le téléphone.
 
 Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et il ne remplace pas un avis médical.
@@ -34,6 +36,7 @@ Ouvrir le projet dans Android Studio, ou en ligne de commande :
 ## Documentation
 
 - [DESIGN.md](DESIGN.md) : principes d'interface, pensés pour tous les publics et pour des personnes fatiguées.
+- [CONTRIBUTING.md](CONTRIBUTING.md) : intégration continue et publication.
 - [ARCHITECTURE.md](ARCHITECTURE.md) : socle scientifique et sources, règles de sécurité, typologie des utilisateurs, parcours, architecture, accessibilité, périmètre du MVP et points à faire valider par un professionnel du sommeil.
 
 ## En cas de détresse
