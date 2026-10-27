@@ -30,17 +30,17 @@ data class DiaryState(
 
 /** Actions de l'agenda, séparées du ViewModel pour afficher l'écran sans données réelles. */
 interface DiaryActions {
-    override fun shift(field: TimeField, minutes: Long)
-    override fun sleepOnset(minutes: Long)
-    override fun awakeningCount(count: Int)
-    override fun awakeMinutes(minutes: Long)
-    override fun quality(value: SleepQuality)
-    override fun next(onSaved: () -> Unit)
-    override fun back(): Boolean
-    override fun editFromSummary(step: DiaryStep)
-    override fun guidedFromStart()
-    override fun dismissIssue()
-    override fun save(onSaved: () -> Unit)
+    fun shift(field: TimeField, minutes: Long)
+    fun sleepOnset(minutes: Long)
+    fun awakeningCount(count: Int)
+    fun awakeMinutes(minutes: Long)
+    fun quality(value: SleepQuality)
+    fun next(onSaved: () -> Unit)
+    fun back(): Boolean
+    fun editFromSummary(step: DiaryStep)
+    fun guidedFromStart()
+    fun dismissIssue()
+    fun save(onSaved: () -> Unit)
 }
 
 class DiaryViewModel(
@@ -63,14 +63,14 @@ class DiaryViewModel(
         }
     }
 
-    fun shift(field: TimeField, minutes: Long) = edit { it.shift(field, minutes) }
-    fun sleepOnset(minutes: Long) = edit { it.withSleepOnset(minutes) }
-    fun awakeningCount(count: Int) = edit { it.withAwakeningCount(count) }
-    fun awakeMinutes(minutes: Long) = edit { it.withAwakeMinutes(minutes) }
-    fun quality(value: SleepQuality) = edit { it.withQuality(value) }
+    override fun shift(field: TimeField, minutes: Long) = edit { it.shift(field, minutes) }
+    override fun sleepOnset(minutes: Long) = edit { it.withSleepOnset(minutes) }
+    override fun awakeningCount(count: Int) = edit { it.withAwakeningCount(count) }
+    override fun awakeMinutes(minutes: Long) = edit { it.withAwakeMinutes(minutes) }
+    override fun quality(value: SleepQuality) = edit { it.withQuality(value) }
 
     /** Étape suivante, retour au résumé, ou enregistrement à la dernière question. */
-    fun next(onSaved: () -> Unit) {
+    override fun next(onSaved: () -> Unit) {
         val s = _state.value ?: return
         val following = s.step.next
         when {
@@ -81,7 +81,7 @@ class DiaryViewModel(
     }
 
     /** Retour : question précédente, ou résumé. Renvoie faux quand il faut quitter l'écran. */
-    fun back(): Boolean {
+    override fun back(): Boolean {
         val s = _state.value ?: return false
         if (s.mode == DiaryMode.SUMMARY) return false
         val previous = s.step.previous
@@ -92,13 +92,13 @@ class DiaryViewModel(
         }
     }
 
-    fun editFromSummary(step: DiaryStep) = _state.update { it?.copy(mode = DiaryMode.GUIDED, step = step, returnToSummary = true) }
+    override fun editFromSummary(step: DiaryStep) = _state.update { it?.copy(mode = DiaryMode.GUIDED, step = step, returnToSummary = true) }
 
-    fun guidedFromStart() = _state.update { it?.copy(mode = DiaryMode.GUIDED, step = DiaryStep.BED_TIME, returnToSummary = false) }
+    override fun guidedFromStart() = _state.update { it?.copy(mode = DiaryMode.GUIDED, step = DiaryStep.BED_TIME, returnToSummary = false) }
 
-    fun dismissIssue() = _state.update { it?.copy(blockingIssue = null) }
+    override fun dismissIssue() = _state.update { it?.copy(blockingIssue = null) }
 
-    fun save(onSaved: () -> Unit) {
+    override fun save(onSaved: () -> Unit) {
         val s = _state.value ?: return
         val blocking = s.draft.issues().firstOrNull { it.blocking }
         if (blocking != null) {
