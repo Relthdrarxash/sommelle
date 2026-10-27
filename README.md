@@ -22,6 +22,7 @@ Les deux modules `core` sont en pur Kotlin, sans dépendance Android : les règl
 
 ## Documentation
 
+- [DESIGN.md](DESIGN.md) : principes d'interface, pensés pour tous les publics et pour des personnes fatiguées.
 - [ARCHITECTURE.md](ARCHITECTURE.md) : socle scientifique et sources, règles de sécurité, typologie des utilisateurs, parcours, architecture, accessibilité, périmètre du MVP et points à faire valider par un professionnel du sommeil.
 
 ## En cas de détresse
