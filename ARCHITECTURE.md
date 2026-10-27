@@ -78,23 +78,26 @@ Rétention : un seul geste par jour (agenda du matin), progression visible (grap
 
 ## 5. Architecture technique
 
-Kotlin, Jetpack Compose, Room, Hilt, WorkManager. minSdk 26, targetSdk à jour.
+Kotlin, Jetpack Compose, Material 3, Room, Navigation Compose. minSdk 26, targetSdk 35. Pas de framework d'injection pour l'instant : l'application assemble un dépôt unique et le passe aux écrans, ce qui suffit à cette taille et garde le build simple. WorkManager arrivera avec les rappels.
 
 ```
 :app                          Navigation, assemblage des modules
 :core:model                   Entités pures (Kotlin, sans Android)
-:core:protocol                Moteur TCC-I pur Kotlin, testé à 100 %
-:core:data                    Room, DAO, dépôts, export
-:core:designsystem            Thème, composants accessibles
-:core:ui                      Utilitaires Compose partagés
-:feature:onboarding           Questionnaire d'entrée, profil
-:feature:diary                Agenda du sommeil
-:feature:window               Fenêtre de sommeil, bilans hebdo
-:feature:stimulus             Règles et rappels contextuels
+:core:protocol                Moteur TCC-I pur Kotlin, testé
+:core:presentation            Logique d'écran pur Kotlin, testée (mise en forme, agenda, calendrier, bilan)
+:core:data                    Room, DAO, dépôt unique
+:core:designsystem            Thèmes jour et nuit, police, composants accessibles
+:feature:onboarding           Questionnaire d'entrée
+:feature:home                 Accueil quotidien, heure de lever
+:feature:diary                Agenda du sommeil (guidé et résumé)
+:feature:week                 Bilan hebdomadaire et graphique
+:feature:night                « Je n'arrive pas à dormir »
+
+À venir :
+:feature:reminders            Notifications locales
 :feature:cognitive            Modules cognitifs
 :feature:education            Contenus, hygiène, relaxation
 :feature:export               PDF / CSV pour le médecin
-:feature:reminders            Notifications locales
 :integration:healthconnect    Pré-remplissage depuis Health Connect
 :integration:usagestats       Pré-remplissage par signaux d'écran
 ```

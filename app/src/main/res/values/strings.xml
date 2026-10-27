@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sommelle</string>
+    <string name="nav_home">Accueil</string>
+    <string name="nav_week">Ma semaine</string>
+    <string name="nav_label">Navigation principale</string>
+</resources>

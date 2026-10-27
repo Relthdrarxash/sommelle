@@ -9,15 +9,26 @@ Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un disposit
 | Module | Contenu | État |
 |---|---|---|
 | `core:model` | Agenda du sommeil (Consensus Sleep Diary), questionnaire d'entrée, fenêtre de sommeil | Fait |
-| `core:protocol` | Métriques, validation de l'agenda, questionnaire de sécurité, restriction du temps au lit, plan du programme | Fait, 37 tests |
-| Modules Android | Interface, stockage, rappels | À faire |
+| `core:protocol` | Métriques, validation de l'agenda, questionnaire de sécurité, restriction du temps au lit, plan du programme | Fait, testé |
+| `core:presentation` | Mise en forme française, brouillon d'agenda, déroulé du questionnaire, calendrier du programme, bilan hebdomadaire | Fait, testé |
+| `core:data` | Base Room locale, dépôt unique, synchronisation des fenêtres | Fait |
+| `core:designsystem` | Thèmes jour et nuit, police Atkinson Hyperlegible Next, composants accessibles | Fait |
+| `feature:onboarding` | Accueil et questionnaire d'entrée | Fait |
+| `feature:home` | Accueil quotidien, choix de l'heure de lever | Fait |
+| `feature:diary` | Agenda guidé et résumé | Fait |
+| `feature:week` | Bilan de la semaine et graphique | Fait |
+| `feature:night` | Écran « Je n'arrive pas à dormir » | Fait |
+| À venir | Rappels, modules cognitifs, export pour le médecin, intégrations | À faire |
 
-Les deux modules `core` sont en pur Kotlin, sans dépendance Android : les règles cliniques sont lisibles et testables isolément. Toutes les valeurs cliniques sont dans `ProtocolConfig`, avec un numéro de version.
+Les modules `core:model`, `core:protocol` et `core:presentation` sont en pur Kotlin, sans dépendance Android : les règles cliniques et la logique des écrans sont lisibles et testables isolément. Toutes les valeurs cliniques sont dans `ProtocolConfig`, avec un numéro de version.
 
-## Lancer les tests
+## Compiler et tester
+
+Ouvrir le projet dans Android Studio, ou en ligne de commande :
 
 ```bash
-./gradlew :core:protocol:test
+./gradlew test                 # tests des modules pur Kotlin
+./gradlew :app:assembleDebug   # application de développement
 ```
 
 ## Documentation
