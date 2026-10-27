@@ -65,7 +65,7 @@ Sommelle n'est pas un dispositif médical : la moindre revendication thérapeuti
 | Catégorie | Santé et remise en forme |
 | Public cible | 18 ans et plus |
 | Publicité | Non |
-| Politique de confidentialité | https://relthdrarxash.github.io/Sommelle/confidentialite.html |
+| Politique de confidentialité | https://relthdrarxash.github.io/sommelle/confidentialite.html |
 | Applications de santé | Déclarer l'usage : suivi du sommeil et accompagnement comportemental ; pas de dispositif médical |
 | Sécurité des données : collecte | Aucune donnée collectée |
 | Sécurité des données : partage | Aucune donnée partagée |
@@ -90,7 +90,7 @@ Démarche : proposer l'appli dans le dépôt `fdroiddata` sur GitLab (fichier de
 >
 > Je développe Sommelle, une application Android gratuite et libre qui accompagne les adultes insomniaques avec les composantes de la TCC-I : agenda du sommeil, restriction du temps au lit ajustée chaque semaine, contrôle du stimulus. Un questionnaire d'entrée écarte la restriction et oriente vers le médecin en cas d'apnée suspectée, de somnolence diurne, de trouble bipolaire, d'épilepsie ou de grossesse. Aucune donnée ne quitte le téléphone.
 >
-> Avant de la diffuser, je souhaite faire relire le protocole par un professionnel du sommeil. Accepteriez-vous d'y consacrer une demi-heure ? Le détail, avec les seuils et les sources, est ici : https://relthdrarxash.github.io/Sommelle/professionnels.html
+> Avant de la diffuser, je souhaite faire relire le protocole par un professionnel du sommeil. Accepteriez-vous d'y consacrer une demi-heure ? Le détail, avec les seuils et les sources, est ici : https://relthdrarxash.github.io/sommelle/professionnels.html
 >
 > Merci pour votre temps,
 > [Prénom Nom]
@@ -99,7 +99,7 @@ Démarche : proposer l'appli dans le dépôt `fdroiddata` sur GitLab (fichier de
 
 ## 6. Modèle : message dans une communauté
 
-> Bonjour à tous. Saviez-vous que le traitement recommandé en premier contre l'insomnie n'est pas un médicament mais une thérapie (TCC-I) ? Elle reste très difficile d'accès en France, alors j'ai développé une appli Android gratuite qui en reprend les étapes : Sommelle. Pas de compte, pas de pub, rien n'est envoyé, et le code est public. Elle ne remplace pas un médecin, mais si ça peut aider : https://relthdrarxash.github.io/Sommelle/. Les retours sont les bienvenus, surtout les critiques.
+> Bonjour à tous. Saviez-vous que le traitement recommandé en premier contre l'insomnie n'est pas un médicament mais une thérapie (TCC-I) ? Elle reste très difficile d'accès en France, alors j'ai développé une appli Android gratuite qui en reprend les étapes : Sommelle. Pas de compte, pas de pub, rien n'est envoyé, et le code est public. Elle ne remplace pas un médecin, mais si ça peut aider : https://relthdrarxash.github.io/sommelle/. Les retours sont les bienvenus, surtout les critiques.
 
 Règles : lire le règlement de la communauté avant de publier, répondre à chaque commentaire, ne jamais publier le même message partout le même jour.
 
@@ -113,7 +113,7 @@ Règles : lire le règlement de la communauté avant de publier, répondre à ch
 >
 > Sommelle, une application Android gratuite et libre, reprend les étapes de cette thérapie : un agenda du sommeil rempli chaque matin, des horaires de sommeil ajustés chaque semaine, et un appui la nuit. Conçue pour être utilisable par tous, y compris les personnes âgées, elle ne collecte aucune donnée : tout reste sur le téléphone.
 >
-> Sommelle ne remplace pas un avis médical. Contact : [adresse]. Site : https://relthdrarxash.github.io/Sommelle/
+> Sommelle ne remplace pas un avis médical. Contact : [adresse]. Site : https://relthdrarxash.github.io/sommelle/
 
 Le chiffre de prévalence vient de Santé publique France (Bulletin épidémiologique hebdomadaire). Vérifier qu'il n'existe pas de chiffre plus récent avant envoi.
 

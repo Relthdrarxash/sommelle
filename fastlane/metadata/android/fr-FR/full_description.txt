@@ -23,5 +23,5 @@ Sommelle est un outil d'accompagnement et d'éducation, pas un dispositif médic
 
 Si vous traversez un moment difficile, le 3114 est joignable gratuitement, jour et nuit.
 
-Site : https://relthdrarxash.github.io/Sommelle/
-Code source : https://github.com/Relthdrarxash/Sommelle
+Site : https://relthdrarxash.github.io/sommelle/
+Code source : https://github.com/Relthdrarxash/sommelle

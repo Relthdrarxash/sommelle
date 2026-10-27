@@ -19,7 +19,7 @@ import qrcode
 import qrcode.image.svg
 from playwright.sync_api import sync_playwright
 
-SITE_URL = "https://relthdrarxash.github.io/Sommelle/"
+SITE_URL = "https://relthdrarxash.github.io/sommelle/"
 ROOT = Path(__file__).resolve().parent.parent
 MARKETING = ROOT / "marketing"
 STORE_IMAGES = ROOT / "fastlane" / "metadata" / "android" / "fr-FR" / "images"
