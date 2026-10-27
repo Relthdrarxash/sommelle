@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Professionnels de santé : Sommelle</title>
+  <meta name="description" content="Sommelle pour les professionnels de santé : protocole de TCC-I, règles de sécurité, sources et fiche à imprimer.">
+  <link rel="icon" href="img/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2C27B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/><path d="M12 7v5l3.2 2.2"/></svg>
+        Sommelle
+      </a>
+      <nav class="site-nav" aria-label="Navigation du site">
+        <a href="./#methode">La méthode</a>
+        <a href="professionnels.html" aria-current="page">Professionnels de santé</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="wrap">
+    <article class="prose">
+      <h1>Pour les professionnels de santé</h1>
+      <p>Sommelle est une application Android gratuite et libre qui accompagne les adultes insomniaques avec les composantes de la thérapie cognitivo-comportementale de l'insomnie (TCC-I). Elle s'inscrit dans un protocole de soins éducatif et d'accompagnement, sans prétendre à un effet thérapeutique.</p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="fiche-prescripteurs.pdf">Télécharger la fiche à imprimer (PDF)</a>
+        <a class="btn btn-outline" href="https://github.com/Relthdrarxash/sommelle/blob/main/ARCHITECTURE.md">Documentation complète</a>
+      </div>
+
+      <div class="callout">
+        <p><strong>Statut.</strong> Sommelle est un outil d'accompagnement et d'éducation, pas un dispositif médical, et ne revendique aucun effet thérapeutique. Le protocole n'a pas encore été évalué dans une étude clinique de grande ampleur.</p>
+      </div>
+
+      <h2>Composantes du programme</h2>
+      <table>
+        <thead><tr><th>Semaine</th><th>Composante</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>Agenda du sommeil quotidien (Consensus Sleep Diary, version Core), éducation au sommeil</td></tr>
+          <tr><td>1</td><td>Restriction du temps au lit, contrôle du stimulus</td></tr>
+          <tr><td>2 à 5</td><td>Exercices cognitifs : croyances sur le sommeil, mise au repos de la journée, intention paradoxale, décatastrophisation, relaxation musculaire progressive</td></tr>
+          <tr><td>6</td><td>Bilan avant/après : semaine d'observation comparée aux 7 dernières nuits</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Restriction du temps au lit</h2>
+      <ul>
+        <li>Ligne de base de 7 jours ; au moins 5 nuits renseignées sur 7 pour calculer ou ajuster une fenêtre.</li>
+        <li>Fenêtre initiale : temps de sommeil total moyen de la ligne de base, arrondi au quart d'heure supérieur.</li>
+        <li>Plancher de 5 h 30 (6 h pour les activités à risque de somnolence), jamais sous 5 h ; plafond de 9 h.</li>
+        <li>Heure de lever fixe choisie par le patient, 7 jours sur 7 ; l'heure de coucher en découle.</li>
+        <li>Ajustement hebdomadaire : efficacité du sommeil d'au moins 85 % : +15 min ; sous 80 % : −15 min ; entre les deux : inchangée. Seuils abaissés de 5 points à partir de 65 ans.</li>
+        <li>Efficacité de la semaine calculée sur les totaux (somme du temps dormi / somme du temps au lit).</li>
+      </ul>
+
+      <h2>Sécurité et orientation</h2>
+      <p>Un questionnaire d'entrée conduit à l'un de trois parcours : programme complet, programme sans restriction, ou orientation vers un médecin.</p>
+      <table>
+        <thead><tr><th>Situation déclarée</th><th>Conduite</th></tr></thead>
+        <tbody>
+          <tr><td>Ronflements avec pauses respiratoires, somnolence diurne marquée</td><td>Pas de restriction, orientation médicale</td></tr>
+          <tr><td>Trouble bipolaire, épilepsie</td><td>Pas de restriction, orientation vers le médecin traitant</td></tr>
+          <tr><td>Grossesse</td><td>Pas de restriction</td></tr>
+          <tr><td>Conduite professionnelle, machines, métier de sécurité</td><td>Plancher relevé à 6 h et avertissement renforcé, ou pas de restriction au choix du patient</td></tr>
+          <tr><td>Horaires très tardifs, sommeil normal une fois endormi</td><td>Pas de restriction, orientation (retard de phase possible)</td></tr>
+          <tr><td>Travail posté ou de nuit, nuits interrompues par un tiers, moins de 18 ans</td><td>Hors du périmètre, orientation</td></tr>
+          <tr><td>Détresse exprimée</td><td>Mise en avant du 3114</td></tr>
+        </tbody>
+      </table>
+      <p>Un avertissement sur la somnolence au volant est affiché au début de la restriction.</p>
+
+      <h2>Conception</h2>
+      <ul>
+        <li>Saisie de l'agenda par estimations, sans chronométrage, pour ne pas encourager la surveillance de l'horloge.</li>
+        <li>Pas de score quotidien ni de série à maintenir, pour limiter le risque d'orthosomnie.</li>
+        <li>Interface conçue pour les personnes âgées et peu à l'aise avec le numérique : grands caractères, gros boutons, langage clair.</li>
+        <li>Aucune donnée collectée : tout reste sur le téléphone du patient.</li>
+        <li>Le patient peut vous montrer un résumé à l'écran, ou le partager en PDF (programme, parcours, tableau hebdomadaire, bilan avant/après, 28 dernières nuits) et en tableur (agenda complet).</li>
+      </ul>
+
+      <h2>Sources principales</h2>
+      <ul>
+        <li>Riemann D. et al., European guideline for the diagnosis and treatment of insomnia 2023, J Sleep Res.</li>
+        <li>Edinger J.D. et al., Behavioral and psychological treatments for chronic insomnia disorder in adults: an AASM clinical practice guideline, J Clin Sleep Med, 2021.</li>
+        <li>Carney C.E. et al., The Consensus Sleep Diary, Sleep, 2012.</li>
+        <li>Spielman A.J. et al., Treatment of chronic insomnia by restriction of time in bed, Sleep, 1987.</li>
+        <li>Kyle S.D. et al., Sleep restriction therapy for insomnia is associated with reduced objective total sleep time, increased daytime somnolence, and objectively impaired vigilance, Sleep, 2015.</li>
+      </ul>
+
+      <h2>Vos retours</h2>
+      <p>Médecin du sommeil, psychologue formé à la TCC-I, généraliste ou pharmacien : vos remarques sur le protocole, les seuils ou les formulations sont précieuses. Vous pouvez les déposer dans le dépôt GitHub du projet.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="./">Accueil</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="https://github.com/Relthdrarxash/sommelle">Code source</a>
+      </div>
+      <p>Sommelle est un logiciel libre distribué sous licence GNU GPL v3.0. Ce n'est pas un dispositif médical.</p>
+    </div>
+  </footer>
+</body>
+</html>
