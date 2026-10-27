@@ -1,12 +1,13 @@
 name: Site
 
-# Publie le dossier site/ sur GitHub Pages, avec les captures d'écran à jour.
+# Publie le dossier docs/ sur GitHub Pages.
+# Le site statique est déjà présent dans docs/, donc on publie directement ce dossier.
 on:
   push:
     branches: [main]
     paths:
       - "site/**"
-      - "docs/captures/**"
+      - "docs/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -29,16 +30,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Ajouter les captures d'écran
+      - name: Vérifier le dossier de publication
         run: |
-          mkdir -p site/captures
-          cp docs/captures/*.png site/captures/
+          test -f docs/index.html
+          test -f docs/style.css
+          ls -1 docs | head
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: docs
 
       - id: deployment
         uses: actions/deploy-pages@v4
