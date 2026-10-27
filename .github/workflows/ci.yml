@@ -32,13 +32,27 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
 
       - name: Tests unitaires (moteur TCC-I et logique d'écran)
-        run: ./gradlew test --stacktrace
+        run: |
+          set -o pipefail
+          ./gradlew test 2>&1 | tee -a gradle.log
 
       - name: Analyse Android (lint)
-        run: ./gradlew :app:lintDebug --stacktrace
+        run: |
+          set -o pipefail
+          ./gradlew :app:lintDebug 2>&1 | tee -a gradle.log
 
       - name: APK de développement
-        run: ./gradlew :app:assembleDebug --stacktrace
+        run: |
+          set -o pipefail
+          ./gradlew :app:assembleDebug 2>&1 | tee -a gradle.log
+
+      # Remonte l'erreur en annotation, lisible directement sur la page de l'exécution.
+      - name: Résumer l'erreur
+        if: failure()
+        run: |
+          grep -E "^e: |What went wrong|Caused by|FAILED|Exception|Error:" -A 4 gradle.log | head -60 | while IFS= read -r line; do
+            echo "::error::${line}"
+          done
 
       - name: Publier les rapports en cas d'échec
         if: failure()
