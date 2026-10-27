@@ -8,6 +8,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.Upsert
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
@@ -54,11 +56,51 @@ interface SommelleDao {
 
     @Query("DELETE FROM sleep_windows")
     suspend fun deleteWindows()
+
+    @Query("SELECT * FROM settings WHERE id = 0")
+    fun settings(): Flow<SettingsEntity?>
+
+    @Query("SELECT * FROM settings WHERE id = 0")
+    suspend fun settingsOnce(): SettingsEntity?
+
+    @Upsert
+    suspend fun upsertSettings(settings: SettingsEntity)
+
+    @Query("SELECT * FROM module_progress")
+    fun moduleProgress(): Flow<List<ModuleProgressEntity>>
+
+    @Upsert
+    suspend fun upsertModuleProgress(progress: ModuleProgressEntity)
+
+    @Query("SELECT * FROM daytime_impacts ORDER BY date")
+    fun daytimeImpacts(): Flow<List<DaytimeImpactEntity>>
+
+    @Query("SELECT * FROM daytime_impacts ORDER BY date")
+    suspend fun daytimeImpactsOnce(): List<DaytimeImpactEntity>
+
+    @Upsert
+    suspend fun upsertDaytimeImpact(impact: DaytimeImpactEntity)
+
+    @Query("DELETE FROM settings")
+    suspend fun deleteSettings()
+
+    @Query("DELETE FROM module_progress")
+    suspend fun deleteModuleProgress()
+
+    @Query("DELETE FROM daytime_impacts")
+    suspend fun deleteDaytimeImpacts()
 }
 
 @Database(
-    entities = [ProgramEntity::class, DiaryEntryEntity::class, SleepWindowEntity::class],
-    version = 1,
+    entities = [
+        ProgramEntity::class,
+        DiaryEntryEntity::class,
+        SleepWindowEntity::class,
+        SettingsEntity::class,
+        ModuleProgressEntity::class,
+        DaytimeImpactEntity::class,
+    ],
+    version = 2,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -66,7 +108,25 @@ abstract class SommelleDatabase : RoomDatabase() {
     abstract fun dao(): SommelleDao
 
     companion object {
+        /** Version 2 : réglages, modules cognitifs terminés et ressenti de la journée. Données existantes conservées. */
+        val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `settings` (`id` INTEGER NOT NULL, `morningReminder` INTEGER NOT NULL, " +
+                        "`morningTime` TEXT, `eveningReminder` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+                )
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `module_progress` (`module` TEXT NOT NULL, `completedOn` TEXT NOT NULL, PRIMARY KEY(`module`))",
+                )
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `daytime_impacts` (`date` TEXT NOT NULL, `score` INTEGER NOT NULL, PRIMARY KEY(`date`))",
+                )
+            }
+        }
+
         fun create(context: Context): SommelleDatabase =
-            Room.databaseBuilder(context.applicationContext, SommelleDatabase::class.java, "sommelle.db").build()
+            Room.databaseBuilder(context.applicationContext, SommelleDatabase::class.java, "sommelle.db")
+                .addMigrations(MIGRATION_1_2)
+                .build()
     }
 }

@@ -36,4 +36,12 @@
     <string name="wake_text">Choisissez une heure tenable tous les jours, week-end compris. C\'est le repère qui stabilise votre sommeil.</string>
     <string name="wake_suggested">Proposé : votre heure de réveil habituelle cette semaine</string>
     <string name="wake_confirm">Valider</string>
+
+    <string name="home_impact_title">Une question rapide</string>
+    <string name="home_impact_question">En ce moment, à quel point vos nuits gênent-elles vos journées\u00A0?</string>
+    <string name="home_impact_0">Pas du tout</string>
+    <string name="home_impact_1">Un peu</string>
+    <string name="home_impact_2">Moyennement</string>
+    <string name="home_impact_3">Beaucoup</string>
+    <string name="home_impact_4">Énormément</string>
 </resources>

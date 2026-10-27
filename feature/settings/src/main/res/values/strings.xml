@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">Réglages</string>
+    <string name="settings_reminders">Rappels</string>
+    <string name="settings_morning">Rappel du matin</string>
+    <string name="settings_morning_hint">Pour noter votre nuit dans l\'agenda. Pas de rappel si c\'est déjà fait.</string>
+    <string name="settings_morning_time">Heure du rappel</string>
+    <string name="settings_evening">Rappel du soir</string>
+    <string name="settings_evening_hint">Trente minutes avant le début de votre fenêtre de sommeil.</string>
+    <string name="settings_evening_unavailable">Disponible une fois votre fenêtre de sommeil calculée.</string>
+    <string name="settings_notifications_off">Les notifications de Sommelle sont désactivées dans les réglages du téléphone : les rappels ne pourront pas s\'afficher.</string>
+    <string name="settings_for_doctor">Pour votre médecin</string>
+    <string name="settings_report">Résumé pour mon médecin</string>
+    <string name="settings_report_hint">Un résumé de votre programme et de votre agenda, à montrer ou à partager.</string>
+    <string name="settings_data">Vos données</string>
+    <string name="settings_data_hint">Tout reste sur votre téléphone. Rien n\'est envoyé.</string>
+    <string name="settings_privacy">Politique de confidentialité</string>
+    <string name="settings_erase">Effacer toutes mes données</string>
+    <string name="settings_erase_title">Effacer toutes vos données ?</string>
+    <string name="settings_erase_text">Votre agenda, vos horaires et vos réponses seront supprimés de ce téléphone. Cette action est définitive.</string>
+    <string name="settings_erase_confirm">Tout effacer</string>
+    <string name="settings_erase_cancel">Annuler</string>
+    <string name="settings_help">Si vous traversez un moment difficile, le 3114 est joignable gratuitement, jour et nuit.</string>
+    <string name="settings_call_3114">Appeler le 3114</string>
+    <string name="settings_on">Activé</string>
+    <string name="settings_off">Désactivé</string>
+</resources>

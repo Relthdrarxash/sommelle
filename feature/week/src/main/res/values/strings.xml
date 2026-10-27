@@ -33,4 +33,9 @@
 
     <string name="week_how_title">Comment est calculée ma fenêtre ?</string>
     <string name="week_how_text" formatted="false">Chaque semaine, Sommelle compare le temps dormi au temps passé au lit. En général, au-delà de 85 %, la fenêtre s\'allonge de 15 minutes ; en dessous de 80 %, elle raccourcit de 15 minutes, sans descendre sous un plancher de sécurité. Entre les deux, elle reste la même. L\'heure de lever ne change jamais.</string>
+
+    <string name="week_outcome_title">Bilan du programme</string>
+    <string name="week_outcome_text">Votre semaine d\'observation comparée à vos sept dernières nuits.</string>
+    <string name="week_outcome_before">Au départ</string>
+    <string name="week_outcome_after">Aujourd\'hui</string>
 </resources>

@@ -32,5 +32,8 @@ dependencies {
     implementation(project(":feature:diary"))
     implementation(project(":feature:week"))
     implementation(project(":feature:night"))
+    implementation(project(":feature:settings"))
+    implementation(project(":feature:export"))
+    implementation(project(":feature:cognitive"))
     testImplementation(libs.junit)
 }

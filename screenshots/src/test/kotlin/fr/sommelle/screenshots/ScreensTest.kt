@@ -37,4 +37,10 @@ class ScreensTest {
     @Test fun agenda_resume() = snap { Samples.Diary(DiaryMode.SUMMARY, DiaryStep.BED_TIME) }
     @Test fun bilan() = snap { Samples.Week() }
     @Test fun nuit() = snap(night = true) { Samples.Night() }
+    @Test fun accueil_question() = snap { Samples.HomeWithQuestion() }
+    @Test fun bilan_programme() = snap { Samples.WeekWithOutcome() }
+    @Test fun reglages() = snap { Samples.Settings() }
+    @Test fun resume_medecin() = snap { Samples.Report() }
+    @Test fun exercices() = snap { Samples.Exercises() }
+    @Test fun exercice() = snap { Samples.Exercise() }
 }

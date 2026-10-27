@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="export_title">Résumé pour votre médecin</string>
+    <string name="export_intro">Vous pouvez montrer cet écran à votre médecin, ou lui transmettre le résumé. Il ne contient ni votre nom ni rien qui vous identifie.</string>
+    <string name="export_share_pdf">Partager le résumé (PDF)</string>
+    <string name="export_share_csv">Partager l\'agenda complet (tableur)</string>
+    <string name="export_share_hint">Le fichier est créé sur votre téléphone. Vous choisissez à qui l\'envoyer.</string>
+    <string name="export_chooser">Partager avec…</string>
+    <string name="export_program">Programme</string>
+    <string name="export_started">Début : %1$s</string>
+    <string name="export_week">%1$s</string>
+    <string name="export_age">Âge : %1$s</string>
+    <string name="export_pathway">Parcours : %1$s</string>
+    <string name="export_window">Fenêtre de sommeil actuelle : %1$s</string>
+    <string name="export_safety">À l\'entrée du programme</string>
+    <string name="export_weeks">Semaine par semaine</string>
+    <string name="export_nights">%1$d nuits notées</string>
+    <string name="export_in_bed">Au lit</string>
+    <string name="export_asleep">Dormi</string>
+    <string name="export_efficiency">Efficacité</string>
+    <string name="export_onset">Endormissement</string>
+    <string name="export_awake">Éveils</string>
+    <string name="export_quality">Qualité</string>
+    <string name="export_window_short">Fenêtre</string>
+    <string name="export_outcome">Bilan du programme</string>
+    <string name="export_empty">Les données apparaîtront après quelques nuits notées.</string>
+    <string name="export_disclaimer">Données déclarées par la personne dans son agenda du sommeil (Consensus Sleep Diary). Sommelle est un outil d\'accompagnement fondé sur la TCC-I, pas un dispositif médical.</string>
+</resources>
