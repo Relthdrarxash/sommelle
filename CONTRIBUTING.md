@@ -19,6 +19,12 @@ Pour ajouter une capture : écrire une méthode dans `screenshots/src/test/kotli
 
 Pour les générer localement : `./gradlew :screenshots:recordPaparazziDebug`.
 
+## Site et supports
+
+- Le dossier `site/` est publié sur GitHub Pages par le workflow **Site**, à chaque modification sur `main`, avec les captures d'écran à jour.
+- La fiche pour les prescripteurs, la bannière et l'icône des stores se régénèrent depuis les modèles de `marketing/` : `python3 marketing/build.py` (prérequis dans l'en-tête du script).
+- Les textes et captures des stores sont dans `fastlane/metadata/android/fr-FR/`, lus par F-Droid et réutilisables pour Google Play.
+
 ## Dépendances
 
 Dependabot propose chaque mois les mises à jour des dépendances Gradle et des actions GitHub.

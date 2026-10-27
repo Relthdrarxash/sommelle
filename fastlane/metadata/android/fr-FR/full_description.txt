@@ -1,0 +1,27 @@
+Vous avez du mal à vous endormir, vous vous réveillez la nuit ou trop tôt, et cela dure ? Sommelle vous accompagne pendant six à huit semaines avec la thérapie cognitivo-comportementale de l'insomnie (TCC-I), la méthode recommandée en premier par les recommandations européennes et américaines sur l'insomnie, avant les somnifères.
+
+COMMENT ÇA MARCHE
+• Quelques questions au départ, pour vérifier que le programme vous convient et vous orienter vers un médecin si besoin.
+• Une semaine d'observation : chaque matin, vous notez votre nuit en une vingtaine de secondes. Une estimation suffit.
+• Votre fenêtre de sommeil : des horaires de coucher et de lever, ajustés chaque semaine selon vos nuits.
+• Un appui la nuit : si vous ne dormez pas, un bouton vous rappelle quoi faire, sur un écran sombre, sans chiffres ni heure.
+• Un bilan chaque semaine, expliqué en une phrase, avec un graphique simple.
+
+PENSÉE POUR TOUT LE MONDE
+• Grands caractères, gros boutons, langage clair.
+• Pas de cadran d'horloge : de gros boutons pour avancer ou reculer de 15 minutes.
+• Conçue pour TalkBack et les grandes tailles de texte.
+• Un thème de nuit sombre et chaud, automatique le soir.
+
+VOS DONNÉES RESTENT CHEZ VOUS
+• Pas de compte, pas de publicité, pas de traceur.
+• L'application n'a pas accès à Internet : rien n'est envoyé.
+• Gratuite et libre : le code est public et chacun peut le vérifier.
+
+À SAVOIR
+Sommelle est un outil d'accompagnement et d'éducation, pas un dispositif médical. Elle ne remplace pas un avis médical. Elle est conçue pour les adultes ; elle n'est pas adaptée au travail de nuit ni aux nuits interrompues par un tiers (bébé, proche à aider). En cas de ronflements avec arrêts de respiration ou d'endormissements dans la journée, parlez-en à votre médecin.
+
+Si vous traversez un moment difficile, le 3114 est joignable gratuitement, jour et nuit.
+
+Site : https://relthdrarxash.github.io/Sommelle/
+Code source : https://github.com/Relthdrarxash/Sommelle
