@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 android {
@@ -20,8 +21,9 @@ kotlin {
     compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
 }
 
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
+// Le plugin Room gère l'export du schéma pour chaque variante sans conflit d'écriture.
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 dependencies {
