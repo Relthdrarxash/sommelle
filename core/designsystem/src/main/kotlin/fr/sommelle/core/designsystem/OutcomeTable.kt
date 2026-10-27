@@ -34,13 +34,17 @@ fun ComparisonTable(beforeTitle: String, afterTitle: String, rows: List<Comparis
         rows.forEachIndexed { index, row ->
             if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             val description = "${row.label} : $beforeTitle ${row.before}, $afterTitle ${row.after}, ${row.trendWord}."
-            Row(Modifier.fillMaxWidth().padding(vertical = 2.dp).clearAndSetSemantics { contentDescription = description }) {
-                Column(Modifier.weight(1.4f)) {
-                    Text(row.label, style = MaterialTheme.typography.bodySmall)
-                    Text(row.trendWord, style = MaterialTheme.typography.labelSmall, color = muted)
+            // Libellé sur sa propre ligne : il n'est jamais coupé au milieu d'un mot, même en grand texte.
+            Column(
+                Modifier.fillMaxWidth().padding(vertical = 2.dp).clearAndSetSemantics { contentDescription = description },
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(row.label, style = MaterialTheme.typography.bodyMedium)
+                Row(Modifier.fillMaxWidth()) {
+                    Text(row.trendWord, style = MaterialTheme.typography.labelSmall, color = muted, modifier = Modifier.weight(1.4f))
+                    Text(row.before, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
+                    Text(row.after, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
                 }
-                Text(row.before, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
-                Text(row.after, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
             }
         }
     }

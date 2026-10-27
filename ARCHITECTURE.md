@@ -78,7 +78,7 @@ Rétention : un seul geste par jour (agenda du matin), progression visible (grap
 
 ## 5. Architecture technique
 
-Kotlin, Jetpack Compose, Material 3, Room, Navigation Compose. minSdk 26, targetSdk 35. Pas de framework d'injection pour l'instant : l'application assemble un dépôt unique et le passe aux écrans, ce qui suffit à cette taille et garde le build simple. WorkManager arrivera avec les rappels.
+Kotlin, Jetpack Compose, Material 3, Room, Navigation Compose, WorkManager. minSdk 26, targetSdk 35. Pas de framework d'injection pour l'instant : l'application assemble un dépôt unique et le passe aux écrans, ce qui suffit à cette taille et garde le build simple.
 
 ```
 :app                          Navigation, assemblage des modules
@@ -92,12 +92,15 @@ Kotlin, Jetpack Compose, Material 3, Room, Navigation Compose. minSdk 26, target
 :feature:diary                Agenda du sommeil (guidé et résumé)
 :feature:week                 Bilan hebdomadaire et graphique
 :feature:night                « Je n'arrive pas à dormir »
+:feature:cognitive            Exercices cognitifs (croyances, journée au repos, intention paradoxale,
+                              décatastrophisation, relaxation)
+:feature:export               Résumé pour le médecin : écran, PDF et CSV générés sur le téléphone
+:feature:reminders            Rappels du matin et du soir (WorkManager)
+:feature:settings             Réglages, effacement des données
+:screenshots                  Captures de la documentation et des stores (Paparazzi)
 
 À venir :
-:feature:reminders            Notifications locales
-:feature:cognitive            Modules cognitifs
-:feature:education            Contenus, hygiène, relaxation
-:feature:export               PDF / CSV pour le médecin
+:feature:education            Contenus éducatifs complets
 :integration:healthconnect    Pré-remplissage depuis Health Connect
 :integration:usagestats       Pré-remplissage par signaux d'écran
 ```
@@ -144,6 +147,8 @@ Reportés : intégrations, modules cognitifs, export PDF, contenus éducatifs co
 - Plancher de fenêtre (5 h 30) et seuils d'ajustement, notamment l'adaptation seniors
 - Efficacité hebdomadaire calculée sur les totaux plutôt qu'en moyenne des nuits, et arrondi supérieur de la fenêtre initiale
 - Plafond de la fenêtre à 9 h
+- Contenu des cinq exercices cognitifs et semaine de déblocage
+- Question sur le ressenti de la journée (non validée) utilisée dans le bilan avant/après, en attendant une échelle validée dont la licence est compatible
 - Règles d'exclusion et formulation des orientations
 - Formulation de l'avertissement somnolence
 - Ordre d'introduction des composantes

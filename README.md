@@ -24,6 +24,11 @@ Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un disposit
     <td align="center"><img src="docs/captures/questionnaire.png" width="220" alt="Question du questionnaire d'entrée avec deux grands boutons Oui et Non"><br>Questionnaire</td>
     <td align="center"><img src="docs/captures/accueil_nuit.png" width="220" alt="Accueil en thème de nuit, sombre et chaud"><br>Thème de nuit</td>
   </tr>
+  <tr>
+    <td align="center"><img src="docs/captures/resume_medecin.png" width="220" alt="Résumé pour le médecin : programme, parcours, fenêtre actuelle, avec boutons de partage en PDF et en tableur"><br>Résumé pour le médecin</td>
+    <td align="center"><img src="docs/captures/exercices.png" width="220" alt="Liste des exercices cognitifs avec leur état, fait ou à faire"><br>Exercices</td>
+    <td align="center"><img src="docs/captures/bilan_programme.png" width="220" alt="Bilan du programme : comparaison entre la semaine d'observation et les sept dernières nuits"><br>Bilan avant/après</td>
+  </tr>
 </table>
 
 Ces captures sont générées automatiquement à partir du code des écrans à chaque modification (voir [CONTRIBUTING.md](CONTRIBUTING.md)) : elles sont toujours à jour.
@@ -42,7 +47,11 @@ Ces captures sont générées automatiquement à partir du code des écrans à c
 | `feature:diary` | Agenda guidé et résumé | Fait |
 | `feature:week` | Bilan de la semaine et graphique | Fait |
 | `feature:night` | Écran « Je n'arrive pas à dormir » | Fait |
-| À venir | Rappels, modules cognitifs, export pour le médecin, intégrations | À faire |
+| `feature:cognitive` | Cinq exercices cognitifs, débloqués à partir de la semaine 2 | Fait |
+| `feature:export` | Résumé pour le médecin : à l'écran, en PDF et en tableur | Fait |
+| `feature:reminders` | Rappels du matin et du soir (WorkManager, sans réseau) | Fait |
+| `feature:settings` | Rappels, résumé, confidentialité, effacement des données | Fait |
+| À venir | Intégrations Health Connect et signaux d'écran | À faire |
 
 Les modules `core:model`, `core:protocol` et `core:presentation` sont en pur Kotlin, sans dépendance Android : les règles cliniques et la logique des écrans sont lisibles et testables isolément. Toutes les valeurs cliniques sont dans `ProtocolConfig`, avec un numéro de version.
 
