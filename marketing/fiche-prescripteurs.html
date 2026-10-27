@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sommelle : fiche pour les professionnels de santé</title>
+<style>
+@font-face { font-family: "Atkinson"; src: url("../site/fonts/atkinson-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Atkinson"; src: url("../site/fonts/atkinson-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "Atkinson"; src: url("../site/fonts/atkinson-800.woff2") format("woff2"); font-weight: 800; }
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { width: 210mm; height: 297mm; font-family: "Atkinson", sans-serif; color: #1E2233; background: #F6F3EE; font-size: 10.5pt; line-height: 1.4; display: flex; flex-direction: column; }
+header { background: #2F3A6B; color: #F6F3EE; padding: 11mm 16mm 9mm; }
+.brand { display: flex; align-items: center; gap: 3mm; font-weight: 800; font-size: 17pt; margin-bottom: 6mm; }
+.brand svg { width: 9mm; height: 9mm; }
+h1 { font-size: 21pt; line-height: 1.15; margin: 0 0 4mm; font-weight: 800; }
+.lead { font-size: 12pt; color: #D9DCEB; margin: 0; max-width: 150mm; }
+main { flex: 1; padding: 8mm 16mm 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 7mm; align-content: start; }
+h2 { font-size: 12.5pt; margin: 0 0 2.5mm; font-weight: 800; color: #2F3A6B; }
+ul, ol { margin: 0; padding-left: 5mm; }
+li { margin-bottom: 1.2mm; }
+.box { background: #FFFDF9; border-radius: 5mm; padding: 5mm 6mm; }
+.wide { grid-column: 1 / -1; }
+.qr { display: grid; grid-template-columns: 40mm 1fr; gap: 7mm; align-items: center; background: #E6E4F2; border-radius: 5mm; padding: 5mm 7mm; }
+.qr svg { width: 40mm; height: 40mm; display: block; background: #fff; border-radius: 3mm; padding: 2mm; }
+.qr p { margin: 0 0 2mm; }
+.url { font-weight: 800; font-size: 12.5pt; color: #2F3A6B; word-break: break-all; }
+footer { padding: 6mm 16mm 10mm; font-size: 9.5pt; color: #4A4F63; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#F2C27B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    Sommelle
+  </div>
+  <h1>Une aide concrète contre l'insomnie, à proposer dès la consultation</h1>
+  <p class="lead">Une application Android gratuite qui accompagne vos patients pendant six à huit semaines avec la thérapie cognitivo-comportementale de l'insomnie <span style="white-space: nowrap">(TCC-I)</span>, traitement de première intention.</p>
+</header>
+
+<main>
+  <section class="box">
+    <h2>Pour quels patients</h2>
+    <ul>
+      <li>Adultes avec une insomnie qui dure et pèse sur les journées.</li>
+      <li>En attente d'une TCC-I avec un thérapeute, ou sans accès à celle-ci.</li>
+      <li>Souhaitant une alternative ou un relais aux hypnotiques.</li>
+    </ul>
+  </section>
+
+  <section class="box">
+    <h2>Comment ça marche</h2>
+    <ol>
+      <li>Questionnaire de sécurité à l'entrée.</li>
+      <li>Une semaine d'agenda du sommeil (Consensus Sleep Diary).</li>
+      <li>Restriction du temps au lit ajustée chaque semaine, contrôle du stimulus.</li>
+      <li>Conseils la nuit, sans lumière vive ni chiffres.</li>
+    </ol>
+  </section>
+
+  <section class="box">
+    <h2>Sécurité</h2>
+    <ul>
+      <li>Pas de restriction en cas d'apnée suspectée, de somnolence diurne, de trouble bipolaire, d'épilepsie ou de grossesse.</li>
+      <li>Orientation vers un médecin si besoin ; travail de nuit hors périmètre.</li>
+      <li>Plancher de 5 h 30, avertissement somnolence au volant.</li>
+    </ul>
+  </section>
+
+  <section class="box">
+    <h2>Pensée pour tous</h2>
+    <ul>
+      <li>Grands caractères, gros boutons, langage clair.</li>
+      <li>Aucune donnée collectée, pas de compte, rien n'est envoyé.</li>
+      <li>Gratuite, sans publicité, code ouvert.</li>
+    </ul>
+  </section>
+
+  <section class="qr wide">
+    {{QR}}
+    <div>
+      <p><strong>Pour l'installer ou en savoir plus</strong>, vos patients scannent ce code avec leur téléphone, ou se rendent sur :</p>
+      <p class="url">{{URL}}</p>
+      <p>Protocole détaillé et sources : page «&nbsp;Professionnels de santé&nbsp;» du site.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Sommelle est un outil d'accompagnement et d'éducation, pas un dispositif médical ; il ne remplace pas un avis médical. Logiciel libre sous licence GNU GPL v3.0.
+</footer>
+</body>
+</html>

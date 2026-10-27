@@ -58,6 +58,8 @@ Ouvrir le projet dans Android Studio, ou en ligne de commande :
 ## Documentation
 
 - [DESIGN.md](DESIGN.md) : principes d'interface, pensés pour tous les publics et pour des personnes fatiguées.
+- [Site de Sommelle](https://relthdrarxash.github.io/Sommelle/), avec la page pour les professionnels de santé et la politique de confidentialité (sources dans `site/`).
+- [docs/LANCEMENT.md](docs/LANCEMENT.md) : kit de lancement (messages, plan, stores, modèles de mails).
 - [CONTRIBUTING.md](CONTRIBUTING.md) : intégration continue et publication.
 - [ARCHITECTURE.md](ARCHITECTURE.md) : socle scientifique et sources, règles de sécurité, typologie des utilisateurs, parcours, architecture, accessibilité, périmètre du MVP et points à faire valider par un professionnel du sommeil.
 

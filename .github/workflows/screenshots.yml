@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: screenshots
@@ -48,26 +49,35 @@ jobs:
             echo "::error::${line}"
           done
 
-      - name: Copier dans docs/captures
+      - name: Copier dans docs/captures et dans la fiche des stores
         run: |
-          mkdir -p docs/captures
-          for f in screenshots/src/test/snapshots/images/*.png; do
+          STORE=fastlane/metadata/android/fr-FR/images/phoneScreenshots
+          mkdir -p docs/captures "$STORE"
+          for f in screenshots/src/test/snapshots/images/*_ScreensTest_*.png; do
             name=$(basename "$f")
-            cp "$f" "docs/captures/${name#*ScreensTest_}"
+            cp "$f" "docs/captures/${name#*_ScreensTest_}"
           done
-          ls -la docs/captures
+          for f in screenshots/src/test/snapshots/images/*_StoreScreensTest_*.png; do
+            name=$(basename "$f")
+            cp "$f" "$STORE/${name#*_StoreScreensTest_}"
+          done
+          ls -la docs/captures "$STORE"
 
       - name: Enregistrer si elles ont changé
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add docs/captures
+          git add docs/captures fastlane/metadata/android/fr-FR/images/phoneScreenshots
           if git diff --cached --quiet; then
             echo "Captures inchangées."
           else
             git commit -m "Captures d'écran à jour"
             git push
+            # Un envoi fait par la CI ne relance pas les workflows : on republie le site explicitement.
+            gh workflow run pages.yml --ref main
           fi
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Publier les rapports en cas d'échec
         if: failure()

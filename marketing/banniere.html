@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sommelle : bannière</title>
+<style>
+@font-face { font-family: "Atkinson"; src: url("../site/fonts/atkinson-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Atkinson"; src: url("../site/fonts/atkinson-800.woff2") format("woff2"); font-weight: 800; }
+html, body { margin: 0; }
+body { width: 1024px; height: 500px; overflow: hidden; background: #2F3A6B; font-family: "Atkinson", sans-serif; color: #F6F3EE; position: relative; }
+.text { position: absolute; left: 64px; top: 0; bottom: 0; width: 560px; display: flex; flex-direction: column; justify-content: center; }
+.brand { display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 64px; margin-bottom: 18px; }
+.brand svg { width: 64px; height: 64px; }
+p { font-size: 32px; line-height: 1.3; margin: 0; color: #D9DCEB; }
+.phone { position: absolute; right: 70px; top: 60px; width: 260px; border-radius: 30px; border: 8px solid #10162F; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F2C27B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      Sommelle
+    </div>
+    <p>La méthode recommandée contre l'insomnie, gratuite et sans collecte de données.</p>
+  </div>
+  <img class="phone" src="../docs/captures/accueil.png" alt="">
+</body>
+</html>
