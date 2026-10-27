@@ -28,3 +28,7 @@ Les deux modules `core` sont en pur Kotlin, sans dépendance Android : les règl
 ## En cas de détresse
 
 Si vous traversez une période difficile, le 3114 (numéro national de prévention du suicide) est joignable gratuitement, 24 h/24 et 7 j/7.
+
+## Licence
+
+Sommelle est distribuée sous licence [GNU GPL v3.0](LICENSE). Vous pouvez l'utiliser, l'étudier, la modifier et la redistribuer, à condition que toute version redistribuée reste publiée sous la même licence, avec son code source.
