@@ -50,18 +50,18 @@ Les captures sont générées à partir du code des écrans à chaque modificati
 
 ## Principes
 
-- **Fondée sur les recommandations.** Agenda du Consensus Sleep Diary, restriction du temps au lit et contrôle du stimulus selon les recommandations européennes (2023) et américaines (2021). Les règles, seuils et sources sont décrits dans le [protocole](docs/protocole.md), avec leurs limites.
+- **Fondée sur les recommandations.** Agenda du Consensus Sleep Diary, restriction du temps au lit et contrôle du stimulus selon les recommandations européennes (2023) et américaines (2021). Les règles, seuils et sources sont décrits dans le [protocole](documentation/protocole.md), avec leurs limites.
 - **100 % locale.** Pas de compte, pas de serveur, pas de permission Internet, pas de traceur. Le code étant public, chacun peut le vérifier.
-- **Pour tout le monde.** Conçue pour une personne mal réveillée, y compris âgée ou peu à l'aise avec le numérique : grands boutons, pas de jargon, pas de geste caché, police Atkinson Hyperlegible, thème de nuit chaud. Les choix sont expliqués dans les [principes d'interface](docs/design.md).
+- **Pour tout le monde.** Conçue pour une personne mal réveillée, y compris âgée ou peu à l'aise avec le numérique : grands boutons, pas de jargon, pas de geste caché, police Atkinson Hyperlegible, thème de nuit chaud. Les choix sont expliqués dans les [principes d'interface](documentation/design.md).
 - **Sans culpabilité.** Pas de score quotidien, pas de série à maintenir, pas de rouge.
 
 ## Documentation
 
 | Document | Contenu |
 |---|---|
-| [Protocole](docs/protocole.md) | Socle scientifique, calculs, règles de sécurité, déroulé du programme, limites |
-| [Principes d'interface](docs/design.md) | Pour qui, et comment l'interface s'adapte à une personne fatiguée |
-| [Architecture](docs/architecture.md) | Modules, données, accessibilité |
+| [Protocole](documentation/protocole.md) | Socle scientifique, calculs, règles de sécurité, déroulé du programme, limites |
+| [Principes d'interface](documentation/design.md) | Pour qui, et comment l'interface s'adapte à une personne fatiguée |
+| [Architecture](documentation/architecture.md) | Modules, données, accessibilité |
 | [Contribuer](CONTRIBUTING.md) | Compiler, tester, captures d'écran, site |
 
 ## Compiler

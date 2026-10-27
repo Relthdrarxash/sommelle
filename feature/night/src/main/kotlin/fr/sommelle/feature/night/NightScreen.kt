@@ -54,7 +54,7 @@ private const val AUTO_CLOSE_MILLIS = 90_000L
 private const val NIGHT_BRIGHTNESS = 0.05f
 
 /**
- * Écran « Je n'arrive pas à dormir » (docs/design.md, section 7) : presque noir et chaud,
+ * Écran « Je n'arrive pas à dormir » (documentation/design.md, section 7) : presque noir et chaud,
  * aucune heure ni aucun chiffre (la barre d'état, qui affiche l'heure, est masquée),
  * luminosité abaissée, fermeture automatique.
  */

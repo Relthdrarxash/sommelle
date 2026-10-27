@@ -60,7 +60,7 @@ enum class SommelleButtonStyle { Primary, Accent, Outlined, Quiet }
 
 /**
  * Bouton de Sommelle : toujours un libellé, une icône facultative, et une hauteur généreuse
- * (64 dp pour les actions principales, docs/design.md, section 9).
+ * (64 dp pour les actions principales, documentation/design.md, section 9).
  */
 @Composable
 fun SommelleButton(
@@ -161,7 +161,7 @@ fun ScreenTitle(text: String, modifier: Modifier = Modifier) {
     )
 }
 
-/** Heure en très grand avec deux gros boutons ±15 min : pas de cadran d'horloge (docs/design.md, section 5). */
+/** Heure en très grand avec deux gros boutons ±15 min : pas de cadran d'horloge (documentation/design.md, section 5). */
 @Composable
 fun TimeStepper(
     value: String,

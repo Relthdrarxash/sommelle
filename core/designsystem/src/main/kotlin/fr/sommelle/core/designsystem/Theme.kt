@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.time.LocalTime
 
-/** Palette de docs/design.md, section 9. Contrastes de texte vérifiés à 4,5:1 minimum. */
+/** Palette de documentation/design.md, section 9. Contrastes de texte vérifiés à 4,5:1 minimum. */
 object SommelleColors {
     val Night = Color(0xFF2F3A6B)
     val Cream = Color(0xFFF6F3EE)
@@ -91,7 +91,7 @@ private fun style(size: Int, weight: FontWeight, lineHeight: Int = (size * 1.3).
     lineHeight = lineHeight.sp,
 )
 
-/** Corps de texte à 18 sp par défaut, jamais sous 15 sp (docs/design.md, section 9). */
+/** Corps de texte à 18 sp par défaut, jamais sous 15 sp (documentation/design.md, section 9). */
 private val SommelleTypography = Typography(
     displayLarge = style(64, FontWeight.ExtraBold, 70),
     displayMedium = style(44, FontWeight.ExtraBold),

@@ -10,8 +10,6 @@ local.properties
 # Captures brutes de Paparazzi : seules celles de docs/captures sont conservées.
 screenshots/src/test/snapshots/
 
-# Copiées depuis docs/captures au moment de publier le site.
-site/captures/
 
 # Clés de signature et fichiers privés : jamais dans le dépôt.
 *.jks

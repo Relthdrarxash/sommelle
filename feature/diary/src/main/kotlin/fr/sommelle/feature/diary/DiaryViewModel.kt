@@ -57,7 +57,7 @@ class DiaryViewModel(
             val loggedNights = repository.snapshot.first()?.entries?.size ?: 0
             val draft = existing?.let { DiaryDraft.prefilled(nightOf, it).copy(prefillSource = it.prefillSource) }
                 ?: DiaryDraft.prefilled(nightOf, repository.previousEntry(nightOf))
-            // Guidé les deux premières semaines, puis résumé une fois l'habitude prise (docs/design.md, section 5).
+            // Guidé les deux premières semaines, puis résumé une fois l'habitude prise (documentation/design.md, section 5).
             val mode = if (existing != null || loggedNights >= HABIT_NIGHTS) DiaryMode.SUMMARY else DiaryMode.GUIDED
             _state.value = DiaryState(draft = draft, mode = mode)
         }

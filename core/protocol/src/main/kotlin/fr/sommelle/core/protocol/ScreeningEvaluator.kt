@@ -10,7 +10,7 @@ import java.time.Duration
 
 /**
  * Traduit les réponses au questionnaire d'entrée en parcours, plancher de fenêtre, orientations et messages.
- * Règles : tableau « Sécurité » de docs/protocole.md. Contre-indications de la restriction
+ * Règles : tableau « Sécurité » de documentation/protocole.md. Contre-indications de la restriction
  * du temps au lit d'après Kyle et al., Sleep 2014, et Riemann et al., J Sleep Res 2023 (à valider).
  *
  * Ordre de priorité : hors périmètre, puis contre-indications à la restriction, puis programme complet.

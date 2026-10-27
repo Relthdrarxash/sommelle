@@ -10,7 +10,7 @@ Les retours, signalements et propositions sont les bienvenus, en particulier de 
 ./gradlew :app:assembleDebug   # application de développement
 ```
 
-Les règles cliniques vivent dans `core:protocol`, en pur Kotlin. Toute modification d'une valeur de `ProtocolConfig` doit incrémenter son numéro de version et être reportée dans [docs/protocole.md](docs/protocole.md).
+Les règles cliniques vivent dans `core:protocol`, en pur Kotlin. Toute modification d'une valeur de `ProtocolConfig` doit incrémenter son numéro de version et être reportée dans [documentation/protocole.md](documentation/protocole.md).
 
 ## Intégration continue
 
@@ -25,7 +25,7 @@ En cas d'échec, les rapports de tests et d'analyse sont joints à l'exécution 
 
 ## Captures d'écran
 
-Les captures de la documentation (`docs/captures`) et des stores sont produites par le module `:screenshots`, qui affiche les écrans avec [Paparazzi](https://github.com/cashapp/paparazzi), sans téléphone ni émulateur. Le workflow **Captures d'écran** les régénère à chaque modification des écrans sur `main`.
+Les captures du site et du README (`docs/captures`) et des stores sont produites par le module `:screenshots`, qui affiche les écrans avec [Paparazzi](https://github.com/cashapp/paparazzi), sans téléphone ni émulateur. Le workflow **Captures d'écran** les régénère à chaque modification des écrans sur `main`.
 
 Pour ajouter une capture : écrire une méthode dans `screenshots/src/test/kotlin/fr/sommelle/screenshots/ScreensTest.kt`. L'image prend le nom de la méthode (`bilan()` donne `docs/captures/bilan.png`). Les écrans s'affichent à partir de leur version sans état (`HomeContent`, `DiaryContent`, etc.), avec les données d'exemple de `Samples.kt`.
 
@@ -33,7 +33,8 @@ Localement : `./gradlew :screenshots:recordPaparazziDebug`.
 
 ## Site et fiches des stores
 
-- Le dossier `site/` est publié sur GitHub Pages par le workflow **Site**, avec les captures à jour.
+- Le dossier `docs/` contient le site, publié tel quel sur GitHub Pages par le workflow **Site**. Les captures y sont mises à jour automatiquement.
+- La documentation du projet (protocole, design, architecture) est dans `documentation/`.
 - Les textes et captures des stores sont dans `fastlane/metadata/android/fr-FR/`, lus par F-Droid.
 
 ## Dépendances

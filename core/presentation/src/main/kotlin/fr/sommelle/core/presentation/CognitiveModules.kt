@@ -2,7 +2,7 @@ package fr.sommelle.core.presentation
 
 /**
  * Modules cognitifs de la TCC-I, proposés une fois la restriction et le contrôle du stimulus installés
- * (docs/protocole.md, section 3). Le contenu est dans les ressources du module d'interface.
+ * (documentation/protocole.md, section 3). Le contenu est dans les ressources du module d'interface.
  *
  * Sources : Morin et Espie, Insomnia: A Clinical Guide to Assessment and Treatment, 2003 ;
  * Harvey, A cognitive model of insomnia, Behav Res Ther, 2002 ; Riemann et al., J Sleep Res, 2023.

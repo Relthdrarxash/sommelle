@@ -12,7 +12,7 @@ enum class ReportTone { LONGER, SHORTER, STEADY, AT_FLOOR, AT_MAXIMUM, MISSING_N
 
 /**
  * Contenu du bilan hebdomadaire, déjà mis en forme. L'interface choisit le titre et la phrase
- * selon [tone] et y insère ces valeurs (docs/design.md, section 8 : une phrase avant un graphique).
+ * selon [tone] et y insère ces valeurs (documentation/design.md, section 8 : une phrase avant un graphique).
  */
 data class WeeklyReport(
     val tone: ReportTone,

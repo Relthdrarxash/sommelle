@@ -1,12 +1,10 @@
 name: Site
 
-# Publie le dossier docs/ sur GitHub Pages.
-# Le site statique est déjà présent dans docs/, donc on publie directement ce dossier.
+# Publie le dossier docs/ (le site statique et ses captures d'écran) sur GitHub Pages.
 on:
   push:
     branches: [main]
     paths:
-      - "site/**"
       - "docs/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
