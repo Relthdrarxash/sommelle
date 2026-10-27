@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onb_welcome_title">Bienvenue dans Sommelle</string>
+    <string name="onb_welcome_1">Sommelle vous accompagne pendant six à huit semaines pour retrouver un meilleur sommeil, avec la méthode recommandée en premier contre l\'insomnie : la thérapie cognitivo-comportementale de l\'insomnie.</string>
+    <string name="onb_welcome_2">Chaque matin, vous remplissez votre agenda du sommeil. Chaque semaine, Sommelle adapte vos horaires.</string>
+    <string name="onb_welcome_3">Vos données restent sur votre téléphone. Pas de compte, rien n\'est envoyé.</string>
+    <string name="onb_welcome_4">Sommelle ne remplace pas un avis médical.</string>
+    <string name="onb_welcome_start">Commencer</string>
+    <string name="onb_intro_questions">Quelques questions d\'abord, pour vérifier que le programme vous convient. Comptez deux à trois minutes.</string>
+
+    <string name="onb_age_title">Quel âge avez-vous ?</string>
+    <string name="onb_age_under_18">Moins de 18 ans</string>
+    <string name="onb_age_18_24">18 à 24 ans</string>
+    <string name="onb_age_25_44">25 à 44 ans</string>
+    <string name="onb_age_45_64">45 à 64 ans</string>
+    <string name="onb_age_65">65 ans et plus</string>
+    <string name="onb_next">Suivant</string>
+
+    <string name="onb_q_shift_work">Travaillez-vous de nuit ou en horaires décalés ?</string>
+    <string name="onb_h_shift_work">Par exemple en équipes alternées, ou avec des nuits de travail régulières.</string>
+    <string name="onb_q_external">Vos nuits sont-elles surtout interrompues par quelqu\'un d\'autre ?</string>
+    <string name="onb_h_external">Un bébé, un proche à aider la nuit…</string>
+    <string name="onb_q_snoring">Ronflez-vous fort, avec des arrêts de respiration remarqués par quelqu\'un ?</string>
+    <string name="onb_q_sleepiness">Vous arrive-t-il de vous endormir sans le vouloir dans la journée ?</string>
+    <string name="onb_h_sleepiness">En réunion, dans les transports, ou au volant.</string>
+    <string name="onb_q_bipolar">Un médecin vous a-t-il dit que vous aviez un trouble bipolaire ?</string>
+    <string name="onb_q_epilepsy">Avez-vous de l\'épilepsie ?</string>
+    <string name="onb_q_pregnancy">Êtes-vous enceinte ?</string>
+    <string name="onb_q_safety">Conduisez-vous pour votre travail, ou utilisez-vous des machines dangereuses ?</string>
+    <string name="onb_h_safety">Ou exercez-vous un métier où un moment d\'inattention peut être grave.</string>
+    <string name="onb_q_prefers_no_restriction">Préférez-vous un programme sans réduction du temps passé au lit ?</string>
+    <string name="onb_h_prefers_no_restriction">Cette partie du programme peut augmenter la fatigue en journée au début. Sans elle, le programme reste utile, avec un effet plus progressif.</string>
+    <string name="onb_q_late">Vous couchez-vous et vous levez-vous très tard, mais dormez-vous bien une fois le sommeil venu ?</string>
+    <string name="onb_q_distress">Ces derniers temps, vous sentez-vous à bout, ou sans espoir ?</string>
+    <string name="onb_h_private">Votre réponse reste sur votre téléphone.</string>
+
+    <string name="onb_result_full_title">Le programme complet vous convient</string>
+    <string name="onb_result_full_text">Pendant une semaine, remplissez simplement votre agenda chaque matin. Ensuite, Sommelle vous proposera des horaires de sommeil, ajustés chaque semaine.</string>
+    <string name="onb_result_partial_title">Un programme adapté pour vous</string>
+    <string name="onb_result_partial_text">D\'après vos réponses, Sommelle ne réduira pas votre temps passé au lit. Vous suivrez le reste du programme : l\'agenda, les conseils pour la nuit et les exercices.</string>
+    <string name="onb_result_out_title">Sommelle n\'est pas adaptée à votre situation</string>
+    <string name="onb_result_out_text">La méthode de Sommelle est conçue pour l\'insomnie des adultes. Un médecin pourra vous proposer une aide mieux adaptée.</string>
+    <string name="onb_result_good_to_know">Bon à savoir</string>
+    <string name="onb_start_program">Commencer le programme</string>
+    <string name="onb_understood">Compris</string>
+
+    <string name="onb_ref_minor">Sommelle est conçue pour les adultes. Parlez de votre sommeil à votre médecin.</string>
+    <string name="onb_ref_apnea">Ronflements avec arrêts de respiration : parlez-en à votre médecin. Ils peuvent signaler une apnée du sommeil, qui se soigne.</string>
+    <string name="onb_ref_sleepiness">Endormissements dans la journée : parlez-en à votre médecin. En attendant, évitez de conduire en cas de somnolence.</string>
+    <string name="onb_ref_bipolar">Trouble bipolaire : réduire le temps passé au lit peut déstabiliser l\'humeur. Parlez de votre sommeil au médecin qui vous suit.</string>
+    <string name="onb_ref_epilepsy">Épilepsie : le manque de sommeil peut favoriser les crises. Parlez de votre sommeil au médecin qui vous suit.</string>
+    <string name="onb_ref_delayed">Horaires très tardifs : il peut s\'agir d\'un décalage de l\'horloge biologique plutôt que d\'une insomnie. Un médecin peut vous orienter.</string>
+    <string name="onb_ref_shift">Horaires de nuit ou décalés : le programme classique n\'est pas prévu pour ce rythme. Un médecin du travail ou du sommeil peut vous conseiller.</string>
+
+    <string name="onb_notice_drowsiness">Les premières semaines, la fatigue peut augmenter. Si vous sentez la somnolence venir, ne conduisez pas et n\'utilisez pas de machine dangereuse.</string>
+    <string name="onb_notice_external">Quand les nuits sont interrompues par quelqu\'un d\'autre, le manque de sommeil ne vient pas d\'une insomnie. Parlez-en à votre médecin si la fatigue vous pèse.</string>
+    <string name="onb_notice_pregnancy">Pendant la grossesse, Sommelle ne réduira pas votre temps passé au lit.</string>
+    <string name="onb_notice_crisis">Si vous traversez un moment difficile, vous pouvez appeler le 3114, gratuitement, jour et nuit. Des personnes formées vous écoutent.</string>
+    <string name="onb_call_3114">Appeler le 3114</string>
+</resources>

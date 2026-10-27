@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Thème de la fenêtre, avant que Compose ne prenne le relais. -->
+    <style name="Theme.Sommelle" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/sommelle_cream</item>
+    </style>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_hello">Bonjour</string>
+    <string name="home_badge_observation">Semaine d\'observation</string>
+    <string name="home_badge_week">Semaine %1$d sur 6</string>
+    <string name="home_badge_maintenance">Maintien</string>
+
+    <string name="home_window_title">Votre fenêtre de sommeil</string>
+    <string name="home_bedtime">Coucher</string>
+    <string name="home_waketime">Lever</string>
+    <string name="home_window_reason">Rester debout jusqu\'à %1$s, c\'est ce qui rend le sommeil plus profond.</string>
+
+    <string name="home_baseline_title">Une semaine pour observer</string>
+    <plurals name="home_baseline_text">
+        <item quantity="one">Remplissez simplement votre agenda chaque matin. Vos horaires de sommeil seront calculés demain.</item>
+        <item quantity="many">Remplissez simplement votre agenda chaque matin. Vos horaires de sommeil seront calculés dans %1$d jours.</item>
+        <item quantity="other">Remplissez simplement votre agenda chaque matin. Vos horaires de sommeil seront calculés dans %1$d jours.</item>
+    </plurals>
+    <string name="home_extended_title">Encore quelques nuits</string>
+    <string name="home_extended_text">Il faut au moins %2$d nuits remplies sur les 7 derniers jours pour calculer vos horaires. Vous en avez %1$d pour l\'instant.</string>
+    <string name="home_wake_title">Choisissez votre heure de lever</string>
+    <string name="home_wake_text">Votre semaine d\'observation est terminée. Il reste à fixer l\'heure de lever, la même tous les jours.</string>
+    <string name="home_wake_button">Choisir mon heure de lever</string>
+    <string name="home_partial_title">Votre programme</string>
+    <string name="home_partial_text">Remplissez votre agenda chaque matin, et suivez les conseils si vous ne dormez pas la nuit.</string>
+    <string name="home_out_title">Parlez-en à votre médecin</string>
+    <string name="home_out_text">La méthode de Sommelle n\'est pas adaptée à votre situation. Un médecin pourra vous proposer une aide mieux adaptée.</string>
+
+    <string name="home_night_missing">La %1$s n\'est pas encore remplie.</string>
+    <string name="home_fill_night">Remplir ma nuit</string>
+    <string name="home_night_done">Votre nuit est enregistrée. À demain matin.</string>
+    <string name="home_fix_night">Corriger ma dernière nuit</string>
+    <string name="home_cant_sleep">Je n\'arrive pas à dormir</string>
+
+    <string name="wake_title">À quelle heure voulez-vous vous lever chaque matin ?</string>
+    <string name="wake_text">Choisissez une heure tenable tous les jours, week-end compris. C\'est le repère qui stabilise votre sommeil.</string>
+    <string name="wake_suggested">Proposé : votre heure de réveil habituelle cette semaine</string>
+    <string name="wake_confirm">Valider</string>
+</resources>

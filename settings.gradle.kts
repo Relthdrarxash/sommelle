@@ -16,10 +16,20 @@ dependencyResolutionManagement {
 
 rootProject.name = "sommelle"
 
+include(":app")
+
 // Socle pur Kotlin (sans dépendance Android), testable et relisible indépendamment de l'interface.
 include(":core:model")
 include(":core:protocol")
+include(":core:presentation")
 
-// Modules Android à venir (voir ARCHITECTURE.md, section 5) :
-// :app, :core:data, :core:designsystem, :core:ui,
-// :feature:onboarding, :feature:diary, :feature:window, :feature:reminders, ...
+// Socle Android.
+include(":core:data")
+include(":core:designsystem")
+
+// Écrans.
+include(":feature:onboarding")
+include(":feature:home")
+include(":feature:diary")
+include(":feature:week")
+include(":feature:night")
