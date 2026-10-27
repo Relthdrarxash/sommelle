@@ -202,6 +202,8 @@ private fun StepButton(label: String, description: String, onClick: () -> Unit, 
         onClick = onClick,
         modifier = modifier.heightIn(min = 64.dp).semantics { contentDescription = description },
         shape = MaterialTheme.shapes.medium,
+        // Marges réduites : « − 15 min » tient sur une ligne même dans une carte étroite.
+        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
