@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import fr.sommelle.core.designsystem.openSafely
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
@@ -61,6 +62,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalTime
 
 private const val PRIVACY_URL = "https://relthdrarxash.github.io/sommelle/confidentialite.html"
+private const val CONTACT_EMAIL = "escale.apps@proton.me"
 
 data class SettingsState(
     val reminders: ReminderSettings,
@@ -180,12 +182,22 @@ fun SettingsContent(
 
         Section(stringResource(R.string.settings_data)) {
             InfoLine(SommelleIcons.History, stringResource(R.string.settings_data_hint))
-            SommelleButton(stringResource(R.string.settings_privacy), { uriHandler.openUri(PRIVACY_URL) }, style = SommelleButtonStyle.Quiet)
+            SommelleButton(stringResource(R.string.settings_privacy), { uriHandler.openSafely(PRIVACY_URL) }, style = SommelleButtonStyle.Quiet)
             SommelleButton(stringResource(R.string.settings_erase), { confirmErase = true }, style = SommelleButtonStyle.Quiet)
         }
 
+        Section(stringResource(R.string.settings_contact)) {
+            Text(stringResource(R.string.settings_contact_hint), style = MaterialTheme.typography.bodyMedium)
+            Text(CONTACT_EMAIL, style = MaterialTheme.typography.titleSmall)
+            SommelleButton(
+                stringResource(R.string.settings_contact_button),
+                { uriHandler.openSafely("mailto:$CONTACT_EMAIL?subject=Sommelle") },
+                style = SommelleButtonStyle.Outlined,
+            )
+        }
+
         Text(stringResource(R.string.settings_help), style = MaterialTheme.typography.bodySmall)
-        SommelleButton(stringResource(R.string.settings_call_3114), { uriHandler.openUri("tel:3114") }, style = SommelleButtonStyle.Quiet)
+        SommelleButton(stringResource(R.string.settings_call_3114), { uriHandler.openSafely("tel:3114") }, style = SommelleButtonStyle.Quiet)
     }
 
     if (confirmErase) {

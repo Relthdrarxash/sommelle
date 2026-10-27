@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import fr.sommelle.core.designsystem.openSafely
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -154,7 +155,7 @@ private fun ResultStep(
             if (Notice.CRISIS_RESOURCES in notices) {
                 SommelleButton(
                     text = stringResource(R.string.onb_call_3114),
-                    onClick = { uriHandler.openUri("tel:3114") },
+                    onClick = { uriHandler.openSafely("tel:3114") },
                     style = SommelleButtonStyle.Outlined,
                 )
             }

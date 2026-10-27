@@ -22,6 +22,9 @@
     <string name="settings_erase_cancel">Annuler</string>
     <string name="settings_help">Si vous traversez un moment difficile, le 3114 est joignable gratuitement, jour et nuit.</string>
     <string name="settings_call_3114">Appeler le 3114</string>
+    <string name="settings_contact">Nous écrire</string>
+    <string name="settings_contact_hint">Une question sur l\'appli, une difficulté, une suggestion\u00A0? Écrivez-nous. Pour une question sur votre santé, adressez-vous à votre médecin.</string>
+    <string name="settings_contact_button">Écrire un e-mail</string>
     <string name="settings_on">Activé</string>
     <string name="settings_off">Désactivé</string>
 </resources>

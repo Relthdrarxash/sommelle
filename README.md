@@ -75,6 +75,10 @@ Ouvrir le projet dans Android Studio, ou en ligne de commande :
 
 L'APK de développement de chaque modification est aussi téléchargeable dans l'onglet Actions.
 
+## Contact
+
+Questions, retours d'utilisation, remarques de professionnels de santé : [escale.apps@proton.me](mailto:escale.apps@proton.me).
+
 ## En cas de détresse
 
 Si vous traversez une période difficile, le 3114 (numéro national de prévention du suicide) est joignable gratuitement, 24 h/24 et 7 j/7.
