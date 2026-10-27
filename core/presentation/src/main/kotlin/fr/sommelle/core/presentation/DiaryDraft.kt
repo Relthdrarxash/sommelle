@@ -33,7 +33,7 @@ enum class TimeField { BED_TIME, LIGHTS_OUT, FINAL_WAKE, OUT_OF_BED }
 
 /**
  * Valeurs proposées sous forme de pastilles : des estimations, pas des chronométrages
- * (DESIGN.md, section 4). La dernière valeur de chaque liste signifie « ou plus ».
+ * (docs/design.md, section 5). La dernière valeur de chaque liste signifie « ou plus ».
  */
 object DiaryChoices {
     val sleepOnsetMinutes: List<Long> = listOf(5, 15, 30, 45, 60, 90)
@@ -153,7 +153,7 @@ data class DiaryDraft(
 
 /**
  * Nuits que l'on peut encore remplir : celle qui vient de se terminer et la précédente
- * (tolérance de 48 h, ARCHITECTURE.md section 4), de la plus récente à la plus ancienne.
+ * (tolérance de 48 h, docs/protocole.md, section 3), de la plus récente à la plus ancienne.
  */
 fun nightsToFill(today: LocalDate, filledNights: Set<LocalDate>): List<LocalDate> =
     listOf(today, today.minusDays(1)).filter { it !in filledNights }

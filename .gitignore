@@ -12,4 +12,10 @@ screenshots/src/test/snapshots/
 
 # Copiées depuis docs/captures au moment de publier le site.
 site/captures/
-marketing/_fiche.html
+
+# Clés de signature et fichiers privés : jamais dans le dépôt.
+*.jks
+*.keystore
+keystore.properties
+/prive/
+

@@ -33,7 +33,7 @@ jobs:
           SOMMELLE_KEYSTORE_BASE64: ${{ secrets.SOMMELLE_KEYSTORE_BASE64 }}
         run: |
           if [ -z "$SOMMELLE_KEYSTORE_BASE64" ]; then
-            echo "::error::Secret SOMMELLE_KEYSTORE_BASE64 manquant : voir CONTRIBUTING.md, section Publication."
+            echo "::error::Secret SOMMELLE_KEYSTORE_BASE64 manquant : configuration réservée au mainteneur."
             exit 1
           fi
           echo "$SOMMELLE_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/sommelle.jks"

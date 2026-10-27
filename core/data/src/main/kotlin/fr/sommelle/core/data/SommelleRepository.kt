@@ -146,7 +146,7 @@ class SommelleRepository(
 
     suspend fun saveDaytimeImpact(score: Int) = dao.upsertDaytimeImpact(DaytimeImpactEntity(date = today(), score = score))
 
-    /** Effacement complet, en un geste depuis les réglages (ARCHITECTURE.md, section 5). */
+    /** Effacement complet, en un geste depuis les réglages (docs/architecture.md, section « Données »). */
     suspend fun eraseEverything() {
         dao.deleteWindows()
         dao.deleteEntries()

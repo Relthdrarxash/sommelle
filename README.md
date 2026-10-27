@@ -2,9 +2,24 @@
 
 [![CI](https://github.com/Relthdrarxash/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Relthdrarxash/sommelle/actions/workflows/ci.yml)
 
-Application Android d'accompagnement à l'insomnie fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie). Gratuite, en français, sans compte, et 100 % locale : aucune donnée ne quitte le téléphone.
+Application Android d'accompagnement à l'insomnie fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie), le traitement recommandé en premier par les recommandations européennes et américaines. Gratuite, en français, sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
 
-Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et il ne remplace pas un avis médical.
+Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et elle ne remplace pas un avis médical.
+
+**[Site de Sommelle](https://relthdrarxash.github.io/sommelle/)** · [Pour les professionnels de santé](https://relthdrarxash.github.io/sommelle/professionnels.html) · [Confidentialité](https://relthdrarxash.github.io/sommelle/confidentialite.html)
+
+## Ce que fait l'appli
+
+Pendant six à huit semaines :
+
+- **Un questionnaire d'entrée** écarte la restriction du sommeil quand elle est déconseillée (apnée possible, trouble bipolaire, épilepsie, grossesse, métier à risque) et oriente vers un médecin si besoin.
+- **Un agenda du sommeil** se remplit chaque matin en une vingtaine de secondes, sans clavier.
+- **Une fenêtre de sommeil** (heures de coucher et de lever) est calculée après une semaine d'observation, puis ajustée chaque semaine selon les nuits.
+- **Un écran pour la nuit**, presque noir, rappelle quoi faire quand le sommeil ne vient pas.
+- **Cinq exercices cognitifs** se débloquent au fil du programme : idées sur le sommeil, mise au repos de la journée, intention paradoxale, décatastrophisation, relaxation.
+- **Un bilan avant/après** compare la semaine d'observation aux dernières nuits.
+- **Un résumé pour le médecin**, à montrer à l'écran ou à partager en PDF et en tableur.
+- **Des rappels** optionnels le matin et le soir.
 
 ## Aperçu
 
@@ -31,46 +46,34 @@ Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un disposit
   </tr>
 </table>
 
-Ces captures sont générées automatiquement à partir du code des écrans à chaque modification (voir [CONTRIBUTING.md](CONTRIBUTING.md)) : elles sont toujours à jour.
+Les captures sont générées à partir du code des écrans à chaque modification.
 
-## État
+## Principes
 
-| Module | Contenu | État |
-|---|---|---|
-| `core:model` | Agenda du sommeil (Consensus Sleep Diary), questionnaire d'entrée, fenêtre de sommeil | Fait |
-| `core:protocol` | Métriques, validation de l'agenda, questionnaire de sécurité, restriction du temps au lit, plan du programme | Fait, testé |
-| `core:presentation` | Mise en forme française, brouillon d'agenda, déroulé du questionnaire, calendrier du programme, bilan hebdomadaire | Fait, testé |
-| `core:data` | Base Room locale, dépôt unique, synchronisation des fenêtres | Fait |
-| `core:designsystem` | Thèmes jour et nuit, police Atkinson Hyperlegible Next, composants accessibles | Fait |
-| `feature:onboarding` | Accueil et questionnaire d'entrée | Fait |
-| `feature:home` | Accueil quotidien, choix de l'heure de lever | Fait |
-| `feature:diary` | Agenda guidé et résumé | Fait |
-| `feature:week` | Bilan de la semaine et graphique | Fait |
-| `feature:night` | Écran « Je n'arrive pas à dormir » | Fait |
-| `feature:cognitive` | Cinq exercices cognitifs, débloqués à partir de la semaine 2 | Fait |
-| `feature:export` | Résumé pour le médecin : à l'écran, en PDF et en tableur | Fait |
-| `feature:reminders` | Rappels du matin et du soir (WorkManager, sans réseau) | Fait |
-| `feature:settings` | Rappels, résumé, confidentialité, effacement des données | Fait |
-| À venir | Intégrations Health Connect et signaux d'écran | À faire |
+- **Fondée sur les recommandations.** Agenda du Consensus Sleep Diary, restriction du temps au lit et contrôle du stimulus selon les recommandations européennes (2023) et américaines (2021). Les règles, seuils et sources sont décrits dans le [protocole](docs/protocole.md), avec leurs limites.
+- **100 % locale.** Pas de compte, pas de serveur, pas de permission Internet, pas de traceur. Le code étant public, chacun peut le vérifier.
+- **Pour tout le monde.** Conçue pour une personne mal réveillée, y compris âgée ou peu à l'aise avec le numérique : grands boutons, pas de jargon, pas de geste caché, police Atkinson Hyperlegible, thème de nuit chaud. Les choix sont expliqués dans les [principes d'interface](docs/design.md).
+- **Sans culpabilité.** Pas de score quotidien, pas de série à maintenir, pas de rouge.
 
-Les modules `core:model`, `core:protocol` et `core:presentation` sont en pur Kotlin, sans dépendance Android : les règles cliniques et la logique des écrans sont lisibles et testables isolément. Toutes les valeurs cliniques sont dans `ProtocolConfig`, avec un numéro de version.
+## Documentation
 
-## Compiler et tester
+| Document | Contenu |
+|---|---|
+| [Protocole](docs/protocole.md) | Socle scientifique, calculs, règles de sécurité, déroulé du programme, limites |
+| [Principes d'interface](docs/design.md) | Pour qui, et comment l'interface s'adapte à une personne fatiguée |
+| [Architecture](docs/architecture.md) | Modules, données, accessibilité |
+| [Contribuer](CONTRIBUTING.md) | Compiler, tester, captures d'écran, site |
+
+## Compiler
 
 Ouvrir le projet dans Android Studio, ou en ligne de commande :
 
 ```bash
-./gradlew test                 # tests des modules pur Kotlin
+./gradlew test                 # tests du moteur et de la logique d'écran
 ./gradlew :app:assembleDebug   # application de développement
 ```
 
-## Documentation
-
-- [DESIGN.md](DESIGN.md) : principes d'interface, pensés pour tous les publics et pour des personnes fatiguées.
-- [Site de Sommelle](https://relthdrarxash.github.io/sommelle/), avec la page pour les professionnels de santé et la politique de confidentialité (sources dans `site/`).
-- [docs/LANCEMENT.md](docs/LANCEMENT.md) : kit de lancement (messages, plan, stores, modèles de mails).
-- [CONTRIBUTING.md](CONTRIBUTING.md) : intégration continue et publication.
-- [ARCHITECTURE.md](ARCHITECTURE.md) : socle scientifique et sources, règles de sécurité, typologie des utilisateurs, parcours, architecture, accessibilité, périmètre du MVP et points à faire valider par un professionnel du sommeil.
+L'APK de développement de chaque modification est aussi téléchargeable dans l'onglet Actions.
 
 ## En cas de détresse
 

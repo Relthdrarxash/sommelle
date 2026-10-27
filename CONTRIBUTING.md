@@ -1,39 +1,45 @@
 # Contribuer à Sommelle
 
+Les retours, signalements et propositions sont les bienvenus, en particulier de la part de professionnels du sommeil et de personnes qui utilisent l'appli. Pour un changement de règle clinique, merci de citer la source sur laquelle il s'appuie.
+
+## Compiler et tester
+
+```bash
+./gradlew test                 # tests unitaires : moteur TCC-I et logique d'écran
+./gradlew :app:lintDebug       # analyse Android
+./gradlew :app:assembleDebug   # application de développement
+```
+
+Les règles cliniques vivent dans `core:protocol`, en pur Kotlin. Toute modification d'une valeur de `ProtocolConfig` doit incrémenter son numéro de version et être reportée dans [docs/protocole.md](docs/protocole.md).
+
 ## Intégration continue
 
-Chaque envoi sur `main` et chaque pull request lancent le workflow **CI** (`.github/workflows/ci.yml`) :
+Chaque envoi sur `main` et chaque pull request lancent le workflow **CI** :
 
 1. vérification du wrapper Gradle ;
-2. tests unitaires (`./gradlew test`) : moteur TCC-I et logique d'écran ;
-3. analyse Android (`./gradlew :app:lintDebug`) ;
-4. construction de l'APK de développement, disponible en téléchargement dans l'onglet Actions (artefact `sommelle-debug`, conservé 14 jours).
+2. tests unitaires ;
+3. analyse Android ;
+4. construction de l'APK de développement, téléchargeable dans l'onglet Actions (artefact `sommelle-debug`, conservé 14 jours).
 
-En cas d'échec, les rapports de tests et de lint sont joints à l'exécution (artefact `rapports`).
+En cas d'échec, les rapports de tests et d'analyse sont joints à l'exécution (artefact `rapports`), et les erreurs apparaissent en annotations.
 
 ## Captures d'écran
 
-Les captures de la documentation (`docs/captures`) sont produites par le module `:screenshots`, qui affiche les écrans avec [Paparazzi](https://github.com/cashapp/paparazzi), sans téléphone ni émulateur. Le workflow **Captures d'écran** les régénère à chaque modification des écrans sur `main` et les enregistre dans le dépôt quand elles changent. Il peut aussi être lancé à la main depuis l'onglet Actions.
+Les captures de la documentation (`docs/captures`) et des stores sont produites par le module `:screenshots`, qui affiche les écrans avec [Paparazzi](https://github.com/cashapp/paparazzi), sans téléphone ni émulateur. Le workflow **Captures d'écran** les régénère à chaque modification des écrans sur `main`.
 
-Pour ajouter une capture : écrire une méthode dans `screenshots/src/test/kotlin/fr/sommelle/screenshots/ScreensTest.kt`. L'image prend le nom de la méthode (`bilan()` donne `docs/captures/bilan.png`). Les écrans s'affichent à partir de leur version sans état (`HomeContent`, `DiaryContent`, etc.), avec des données d'exemple.
+Pour ajouter une capture : écrire une méthode dans `screenshots/src/test/kotlin/fr/sommelle/screenshots/ScreensTest.kt`. L'image prend le nom de la méthode (`bilan()` donne `docs/captures/bilan.png`). Les écrans s'affichent à partir de leur version sans état (`HomeContent`, `DiaryContent`, etc.), avec les données d'exemple de `Samples.kt`.
 
-Pour les générer localement : `./gradlew :screenshots:recordPaparazziDebug`.
+Localement : `./gradlew :screenshots:recordPaparazziDebug`.
 
-## Site et supports
+## Site et fiches des stores
 
-- Le dossier `site/` est publié sur GitHub Pages par le workflow **Site**, à chaque modification sur `main`, avec les captures d'écran à jour.
-- La fiche pour les prescripteurs, la bannière et l'icône des stores se régénèrent depuis les modèles de `marketing/` : `python3 marketing/build.py` (prérequis dans l'en-tête du script).
-- Les textes et captures des stores sont dans `fastlane/metadata/android/fr-FR/`, lus par F-Droid et réutilisables pour Google Play.
+- Le dossier `site/` est publié sur GitHub Pages par le workflow **Site**, avec les captures à jour.
+- Les textes et captures des stores sont dans `fastlane/metadata/android/fr-FR/`, lus par F-Droid.
 
 ## Dépendances
 
 Dependabot propose chaque mois les mises à jour des dépendances Gradle et des actions GitHub.
 
-## Publication
+## Versions
 
-Pousser une étiquette de version produit un APK et un bundle signés, publiés dans une version GitHub avec leur empreinte SHA-256 :
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-```
+Les versions signées sont publiées par le mainteneur à partir d'une étiquette `v*`, via le workflow **Publication**. Chaque version GitHub fournit l'APK, le bundle et leur empreinte SHA-256.
