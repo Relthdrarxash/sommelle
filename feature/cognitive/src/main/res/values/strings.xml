@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cog_title">Exercices</string>
+    <string name="cog_intro">Des exercices courts pour apaiser les pensées qui entretiennent l\'insomnie. Comptez cinq minutes chacun.</string>
+    <string name="cog_locked_all">Les premiers exercices arrivent en semaine 2, une fois vos nouveaux horaires installés.</string>
+    <string name="cog_next">Prochain exercice : semaine %1$d</string>
+    <string name="cog_done">Fait</string>
+    <string name="cog_todo">À faire</string>
+    <string name="cog_open">Ouvrir</string>
+    <string name="cog_finish">J\'ai terminé cet exercice</string>
+    <string name="cog_finished">Exercice terminé. Vous pouvez y revenir quand vous voulez.</string>
+    <string name="cog_out_of_scope">Ces exercices font partie du programme, qui n\'est pas adapté à votre situation. Parlez de votre sommeil à votre médecin.</string>
+    <string name="cog_step">Étape %1$d sur %2$d</string>
+
+    <!-- Croyances sur le sommeil -->
+    <string name="cog_beliefs_title">Les idées sur le sommeil</string>
+    <string name="cog_beliefs_summary">Repérer les pensées qui mettent la pression, et les nuancer.</string>
+    <string name="cog_beliefs_intro">Certaines idées sur le sommeil sont très répandues. Elles semblent raisonnables, mais elles augmentent la tension au moment de se coucher, et donc l\'éveil. Pour chacune, demandez-vous si elle vous traverse l\'esprit, puis lisez la version plus juste.</string>
+    <string-array name="cog_beliefs_steps">
+        <item>« Il me faut 8 heures de sommeil pour être en forme. »\n\nLe besoin de sommeil varie d\'une personne à l\'autre, et d\'une nuit à l\'autre. Beaucoup d\'adultes vont bien avec moins de 8 heures.</item>
+        <item>« Si je dors mal cette nuit, ma journée de demain est fichue. »\n\nAprès une mauvaise nuit, on fonctionne souvent mieux qu\'on ne le craint. La fatigue est réelle, mais rarement aussi forte que prévu.</item>
+        <item>« Je dois rattraper mon sommeil en restant plus longtemps au lit. »\n\nRester plus longtemps au lit rend le sommeil plus léger et plus haché. Des horaires stables sont ce qui le consolide.</item>
+        <item>« Je ne contrôle plus du tout mon sommeil. »\n\nVous agissez sur tout ce qui le favorise : vos horaires, un lit réservé au sommeil, le rythme de vos soirées. Le sommeil vient ensuite de lui-même.</item>
+        <item>« L\'insomnie va abîmer ma santé. »\n\nC\'est une inquiétude compréhensible, mais y penser la nuit entretient l\'éveil. L\'insomnie se traite, et la méthode que vous suivez est celle recommandée en premier.</item>
+    </string-array>
+
+    <!-- Mettre sa journée au repos -->
+    <string name="cog_winddown_title">Mettre sa journée au repos</string>
+    <string name="cog_winddown_summary">Déposer ses soucis en début de soirée, pour ne pas les emporter au lit.</string>
+    <string name="cog_winddown_intro">Quand on se couche, l\'esprit profite souvent du calme pour repasser la journée et préparer le lendemain. Ce rituel lui donne un autre moment pour le faire, plus tôt.</string>
+    <string-array name="cog_winddown_steps">
+        <item>En début de soirée, au moins une heure avant de vous coucher, prenez quinze minutes au calme avec une feuille et un stylo.</item>
+        <item>Notez ce qui vous préoccupe : le travail, la famille, les choses à faire. Sans chercher à tout régler.</item>
+        <item>À côté de chaque souci, écrivez la prochaine petite action, ou « rien à faire ce soir ».</item>
+        <item>Rangez la feuille. Si un souci revient au lit, rappelez-vous qu\'il est noté et que vous vous en occuperez demain.</item>
+    </string-array>
+
+    <!-- Intention paradoxale -->
+    <string name="cog_paradox_title">Arrêter de chercher le sommeil</string>
+    <string name="cog_paradox_summary">L\'effort pour dormir empêche le sommeil de venir. Essayez l\'inverse.</string>
+    <string name="cog_paradox_intro">Le sommeil ne se commande pas : plus on cherche à s\'endormir, plus on reste éveillé. Cet exercice retire cette pression.</string>
+    <string-array name="cog_paradox_steps">
+        <item>Au lit, lumière éteinte, gardez les yeux ouverts dans le noir et dites-vous tranquillement que vous allez garder les yeux ouverts encore un peu.</item>
+        <item>Ne faites rien pour dormir. Ne regardez pas l\'heure. Laissez simplement le temps passer.</item>
+        <item>Si au bout d\'un long moment vous vous sentez tendu, appliquez la règle habituelle : levez-vous, et revenez au lit quand le sommeil vient.</item>
+    </string-array>
+
+    <!-- Décatastrophiser -->
+    <string name="cog_decatastrophize_title">Revenir au plus probable</string>
+    <string name="cog_decatastrophize_summary">Quatre questions quand une mauvaise nuit inquiète.</string>
+    <string name="cog_decatastrophize_intro">Quand la nuit s\'annonce mal, l\'esprit imagine souvent le pire pour le lendemain. Ces questions aident à revenir à ce qui est le plus probable. Vous pouvez y répondre dans votre tête ou sur papier, en soirée.</string>
+    <string-array name="cog_decatastrophize_steps">
+        <item>Qu\'est-ce que je crains exactement pour demain ?</item>
+        <item>Qu\'est-ce qui s\'est réellement passé les autres fois, après une mauvaise nuit ?</item>
+        <item>Qu\'est-ce qui est le plus probable cette fois-ci ?</item>
+        <item>Si demain est difficile, qu\'est-ce qui m\'aiderait à tenir ? Une pause, une marche, une tâche plus simple…</item>
+    </string-array>
+
+    <!-- Relaxation -->
+    <string name="cog_relax_title">Relâcher le corps</string>
+    <string name="cog_relax_summary">Relaxation musculaire progressive, en dix minutes.</string>
+    <string name="cog_relax_intro">À faire en soirée, assis ou allongé, de préférence hors du lit les premières fois. Pour chaque partie du corps : contractez doucement pendant cinq secondes, puis relâchez pendant quinze secondes en remarquant la différence. Arrêtez si une contraction fait mal.</string>
+    <string-array name="cog_relax_steps">
+        <item>Les mains et les avant-bras : serrez les poings, puis relâchez.</item>
+        <item>Les bras : pliez les coudes et contractez les biceps, puis relâchez.</item>
+        <item>Les épaules et la nuque : montez les épaules vers les oreilles, puis laissez-les retomber.</item>
+        <item>Le visage : plissez le front et serrez les paupières, puis détendez tout le visage.</item>
+        <item>Le ventre et le dos : rentrez le ventre et redressez le dos, puis relâchez en respirant lentement.</item>
+        <item>Les jambes et les pieds : tendez les jambes et pointez les pieds, puis relâchez. Restez quelques instants dans cette détente.</item>
+    </string-array>
+</resources>

@@ -53,6 +53,29 @@ data class SleepWindowEntity(
     val change: String?,
 )
 
+/** Une seule ligne : les réglages de la personne. Ajoutée en version 2. */
+@Entity(tableName = "settings")
+data class SettingsEntity(
+    @PrimaryKey val id: Int = 0,
+    val morningReminder: Boolean,
+    val morningTime: LocalTime?,
+    val eveningReminder: Boolean,
+)
+
+/** Modules cognitifs terminés. Ajoutée en version 2. */
+@Entity(tableName = "module_progress")
+data class ModuleProgressEntity(
+    @PrimaryKey val module: String,
+    val completedOn: LocalDate,
+)
+
+/** Ressenti de la journée (0 à 4), au début et à la fin du programme. Ajoutée en version 2. */
+@Entity(tableName = "daytime_impacts")
+data class DaytimeImpactEntity(
+    @PrimaryKey val date: LocalDate,
+    val score: Int,
+)
+
 /** Les dates et heures sont stockées au format ISO 8601, lisible dans un export. */
 class Converters {
     @TypeConverter fun fromDate(value: LocalDate?): String? = value?.toString()

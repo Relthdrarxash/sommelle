@@ -32,6 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.sommelle.core.data.SommelleRepository
+import fr.sommelle.core.designsystem.ComparisonRow
+import fr.sommelle.core.designsystem.ComparisonTable
 import fr.sommelle.core.designsystem.ScreenScaffold
 import fr.sommelle.core.designsystem.ScreenTitle
 import fr.sommelle.core.designsystem.SommelleButton
@@ -61,6 +63,20 @@ fun WeekContent(s: WeekState) {
         Text(text, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
 
         if (s.bedTime != null && s.wakeTime != null) WindowCard(s.bedTime, s.wakeTime)
+
+        if (s.outcome.isNotEmpty()) {
+            Surface(shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.surface, shadowElevation = 1.dp) {
+                Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text(stringResource(R.string.week_outcome_title), style = MaterialTheme.typography.titleMedium, modifier = Modifier.semantics { heading() })
+                    Text(stringResource(R.string.week_outcome_text), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    ComparisonTable(
+                        beforeTitle = stringResource(R.string.week_outcome_before),
+                        afterTitle = stringResource(R.string.week_outcome_after),
+                        rows = s.outcome.map { ComparisonRow(it.metric.label, it.before, it.after, it.trend.word) },
+                    )
+                }
+            }
+        }
 
         Chart(s.bars, s.chartDescription)
 

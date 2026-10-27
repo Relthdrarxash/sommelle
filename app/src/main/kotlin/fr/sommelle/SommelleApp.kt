@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -29,11 +30,16 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import fr.sommelle.core.data.SommelleRepository
 import fr.sommelle.core.designsystem.SommelleIcons
+import fr.sommelle.core.presentation.CognitiveModule
+import fr.sommelle.feature.cognitive.ModuleScreen
+import fr.sommelle.feature.cognitive.ModulesScreen
 import fr.sommelle.feature.diary.DiaryScreen
+import fr.sommelle.feature.export.ExportScreen
 import fr.sommelle.feature.home.HomeScreen
 import fr.sommelle.feature.home.WakeTimeScreen
 import fr.sommelle.feature.night.NightScreen
 import fr.sommelle.feature.onboarding.OnboardingScreen
+import fr.sommelle.feature.settings.SettingsScreen
 import fr.sommelle.feature.week.WeekScreen
 import kotlinx.coroutines.flow.first
 import java.time.LocalDate
@@ -45,7 +51,12 @@ private object Routes {
     const val NIGHT = "night"
     const val WAKE_TIME = "wake-time"
     const val DIARY = "diary/{nightOf}"
+    const val EXERCISES = "exercises"
+    const val EXERCISE = "exercise/{module}"
+    const val SETTINGS = "settings"
+    const val REPORT = "report"
     fun diary(nightOf: LocalDate) = "diary/$nightOf"
+    fun exercise(module: CognitiveModule) = "exercise/${module.name}"
 }
 
 @Composable
@@ -58,7 +69,7 @@ fun SommelleApp(repository: SommelleRepository) {
     val navController = rememberNavController()
     val backStack by navController.currentBackStackEntryAsState()
     val route = backStack?.destination?.route
-    val showBar = route == Routes.HOME || route == Routes.WEEK
+    val showBar = route in setOf(Routes.HOME, Routes.WEEK, Routes.EXERCISES, Routes.SETTINGS)
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
@@ -83,6 +94,26 @@ fun SommelleApp(repository: SommelleRepository) {
                 )
             }
             composable(Routes.WEEK) { WeekScreen(repository) }
+            composable(Routes.EXERCISES) {
+                ModulesScreen(repository, onOpen = { navController.navigate(Routes.exercise(it)) })
+            }
+            composable(
+                route = Routes.EXERCISE,
+                arguments = listOf(navArgument("module") { type = NavType.StringType }),
+            ) { entry ->
+                val module = CognitiveModule.entries.firstOrNull { it.name == entry.arguments?.getString("module") }
+                if (module != null) ModuleScreen(repository, module, onBack = { navController.popBackStack() })
+            }
+            composable(Routes.SETTINGS) {
+                SettingsScreen(
+                    repository = repository,
+                    onOpenReport = { navController.navigate(Routes.REPORT) },
+                    onErased = {
+                        navController.navigate(Routes.ONBOARDING) { popUpTo(0) { inclusive = true } }
+                    },
+                )
+            }
+            composable(Routes.REPORT) { ExportScreen(repository, onBack = { navController.popBackStack() }) }
             composable(Routes.WAKE_TIME) { WakeTimeScreen(repository, onDone = { navController.popBackStack() }) }
             composable(Routes.NIGHT) { NightScreen(onClose = { navController.popBackStack() }) }
             composable(
@@ -113,6 +144,8 @@ private fun BottomBar(navController: NavHostController, route: String?) {
         listOf(
             Triple(Routes.HOME, R.string.nav_home, Icons.Filled.Home),
             Triple(Routes.WEEK, R.string.nav_week, SommelleIcons.Chart),
+            Triple(Routes.EXERCISES, R.string.nav_exercises, SommelleIcons.Lamp),
+            Triple(Routes.SETTINGS, R.string.nav_settings, Icons.Filled.Settings),
         ).forEach { (target, text, icon) ->
             NavigationBarItem(
                 selected = route == target,

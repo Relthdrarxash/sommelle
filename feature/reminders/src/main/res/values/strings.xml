@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reminders_channel">Rappels du programme</string>
+    <string name="reminders_channel_description">Rappel du matin pour l\'agenda et rappel du soir avant votre heure de coucher.</string>
+    <string name="reminder_morning_title">Comment s\'est passée votre nuit ?</string>
+    <string name="reminder_morning_text">Vingt secondes pour la noter dans votre agenda.</string>
+    <string name="reminder_evening_title">Votre fenêtre commence à %1$s</string>
+    <string name="reminder_evening_text">Restez debout jusque-là : c\'est ce qui rend le sommeil plus profond.</string>
+</resources>

@@ -6,16 +6,28 @@ import fr.sommelle.core.data.db.SommelleDatabase
 import fr.sommelle.core.model.DiaryEntry
 import fr.sommelle.core.model.ScreeningAnswers
 import fr.sommelle.core.model.ScreeningResult
+import fr.sommelle.core.data.db.DaytimeImpactEntity
+import fr.sommelle.core.data.db.ModuleProgressEntity
+import fr.sommelle.core.data.db.SettingsEntity
+import fr.sommelle.core.presentation.CognitiveModule
+import fr.sommelle.core.presentation.DaytimeImpact
 import fr.sommelle.core.presentation.ProgramEngine
+import fr.sommelle.core.presentation.ReminderSettings
 import fr.sommelle.core.presentation.StoredWindow
 import fr.sommelle.core.presentation.WindowStep
 import fr.sommelle.core.protocol.ProtocolConfig
 import fr.sommelle.core.protocol.ScreeningEvaluator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import java.time.Clock
 import java.time.LocalDate
 import java.time.LocalTime
+
+/** Implémenté par l'application : donne accès au dépôt là où l'injection n'est pas possible (tâches de fond). */
+interface SommelleRepositoryProvider {
+    val repository: SommelleRepository
+}
 
 /** Le programme en cours, tel qu'enregistré. */
 data class Program(
@@ -103,12 +115,52 @@ class SommelleRepository(
         return null
     }
 
+    // Réglages des rappels
+
+    val reminderSettings: Flow<ReminderSettings> = dao.settings().map { it?.toModel() ?: ReminderSettings() }
+
+    suspend fun reminderSettingsOnce(): ReminderSettings = dao.settingsOnce()?.toModel() ?: ReminderSettings()
+
+    suspend fun saveReminderSettings(settings: ReminderSettings) = dao.upsertSettings(
+        SettingsEntity(
+            morningReminder = settings.morningEnabled,
+            morningTime = settings.morningTime,
+            eveningReminder = settings.eveningEnabled,
+        ),
+    )
+
+    // Modules cognitifs
+
+    val completedModules: Flow<Set<CognitiveModule>> = dao.moduleProgress().map { rows ->
+        rows.mapNotNull { row -> CognitiveModule.entries.firstOrNull { it.name == row.module } }.toSet()
+    }
+
+    suspend fun completeModule(module: CognitiveModule) =
+        dao.upsertModuleProgress(ModuleProgressEntity(module = module.name, completedOn = today()))
+
+    // Ressenti de la journée
+
+    val daytimeImpacts: Flow<List<DaytimeImpact>> = dao.daytimeImpacts().map { rows -> rows.map { DaytimeImpact(it.date, it.score) } }
+
+    suspend fun daytimeImpactsOnce(): List<DaytimeImpact> = dao.daytimeImpactsOnce().map { DaytimeImpact(it.date, it.score) }
+
+    suspend fun saveDaytimeImpact(score: Int) = dao.upsertDaytimeImpact(DaytimeImpactEntity(date = today(), score = score))
+
     /** Effacement complet, en un geste depuis les réglages (ARCHITECTURE.md, section 5). */
     suspend fun eraseEverything() {
         dao.deleteWindows()
         dao.deleteEntries()
         dao.deleteProgram()
+        dao.deleteSettings()
+        dao.deleteModuleProgress()
+        dao.deleteDaytimeImpacts()
     }
+
+    private fun SettingsEntity.toModel() = ReminderSettings(
+        morningEnabled = morningReminder,
+        morningTime = morningTime,
+        eveningEnabled = eveningReminder,
+    )
 
     companion object {
         private const val MAX_CATCH_UP_WEEKS = 104

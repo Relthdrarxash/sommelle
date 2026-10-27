@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.sommelle.core.data.SommelleRepository
+import fr.sommelle.core.designsystem.ChoiceGrid
 import fr.sommelle.core.designsystem.ScreenScaffold
 import fr.sommelle.core.designsystem.SommelleButton
 import fr.sommelle.core.designsystem.SommelleButtonStyle
@@ -34,6 +35,7 @@ import fr.sommelle.core.designsystem.SommelleColors
 import fr.sommelle.core.designsystem.SommelleIcons
 import fr.sommelle.core.model.Pathway
 import fr.sommelle.core.model.SleepWindow
+import fr.sommelle.core.presentation.DaytimeImpact
 import fr.sommelle.core.presentation.FrenchFormat
 import fr.sommelle.core.presentation.WeekBadge
 import fr.sommelle.core.presentation.WindowStep
@@ -49,7 +51,7 @@ fun HomeScreen(
     val viewModel: HomeViewModel = viewModel { HomeViewModel(repository) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
-    HomeContent(s, onFillNight, onChooseWakeTime, onCantSleep)
+    HomeContent(s, onFillNight, onChooseWakeTime, onCantSleep, onDaytimeImpact = viewModel::saveDaytimeImpact)
 }
 
 /** Accueil sans état ni dépendance : affiché tel quel dans les captures d'écran de la documentation. */
@@ -59,6 +61,7 @@ fun HomeContent(
     onFillNight: (LocalDate) -> Unit,
     onChooseWakeTime: () -> Unit,
     onCantSleep: () -> Unit,
+    onDaytimeImpact: (Int) -> Unit = {},
 ) {
     val diaryAvailable = s.pathway != Pathway.OUT_OF_SCOPE
     ScreenScaffold(
@@ -74,6 +77,7 @@ fun HomeContent(
         },
     ) {
         Header(s)
+        if (s.askDaytimeImpact) DaytimeImpactCard(onDaytimeImpact)
         ProgramCard(s, onChooseWakeTime)
         if (diaryAvailable) DiarySection(s, onFillNight)
     }
@@ -202,6 +206,36 @@ private fun DiarySection(s: HomeState, onFillNight: (LocalDate) -> Unit) {
                 text = stringResource(R.string.home_fix_night),
                 onClick = { onFillNight(s.lastNight) },
                 style = SommelleButtonStyle.Quiet,
+            )
+        }
+    }
+}
+
+/** Ressenti de la journée, demandé au début puis en fin de programme pour le bilan avant/après. */
+@Composable
+private fun DaytimeImpactCard(onAnswer: (Int) -> Unit) {
+    val labels = listOf(
+        R.string.home_impact_0, R.string.home_impact_1, R.string.home_impact_2, R.string.home_impact_3, R.string.home_impact_4,
+    )
+    Surface(shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.primaryContainer) {
+        Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(
+                stringResource(R.string.home_impact_title),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
+            Text(
+                stringResource(R.string.home_impact_question),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier.semantics { heading() },
+            )
+            ChoiceGrid(
+                options = DaytimeImpact.SCALE.toList(),
+                selected = null,
+                label = { stringResource(labels[it]) },
+                onSelect = onAnswer,
+                columns = 1,
             )
         }
     }
