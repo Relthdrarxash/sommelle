@@ -14,8 +14,22 @@ android {
         applicationId = "fr.sommelle"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        // En publication, la CI fournit le numéro et le nom de version (étiquette v1.2.3).
+        versionCode = System.getenv("SOMMELLE_VERSION_CODE")?.toIntOrNull() ?: 1
+        versionName = System.getenv("SOMMELLE_VERSION_NAME")?.removePrefix("v") ?: "0.1.0"
+    }
+
+    // La clé de signature n'est jamais dans le dépôt : elle vient des secrets de la CI.
+    val keystorePath = System.getenv("SOMMELLE_KEYSTORE_PATH")
+    signingConfigs {
+        if (keystorePath != null) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("SOMMELLE_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("SOMMELLE_KEY_ALIAS")
+                keyPassword = System.getenv("SOMMELLE_KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
@@ -23,6 +37,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            if (keystorePath != null) signingConfig = signingConfigs.getByName("release")
         }
     }
 
