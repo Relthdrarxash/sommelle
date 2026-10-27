@@ -153,7 +153,7 @@ data class DiaryDraft(
 
 /**
  * Nuits que l'on peut encore remplir : celle qui vient de se terminer et la précédente
- * (tolérance de 48 h, documentation/protocole.md, section 3), de la plus récente à la plus ancienne.
+ * (tolérance de 48 h, docs/protocole.html, section 2), de la plus récente à la plus ancienne.
  */
 fun nightsToFill(today: LocalDate, filledNights: Set<LocalDate>): List<LocalDate> =
     listOf(today, today.minusDays(1)).filter { it !in filledNights }

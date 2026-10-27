@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dossier scientifique : Sommelle</title>
+  <meta name="description" content="Dossier scientifique de Sommelle pour les professionnels de santé : composantes de TCC-I, calcul de la fenêtre de sommeil, règles de sécurité, exercices cognitifs, résumé pour le médecin, limites et sources.">
+  <link rel="icon" href="img/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2C27B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/><path d="M12 7v5l3.2 2.2"/></svg>
+        Sommelle
+      </a>
+      <nav class="site-nav" aria-label="Navigation du site">
+        <a href="./#methode">La méthode</a>
+        <a href="professionnels.html" aria-current="page">Professionnels de santé</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="wrap">
+    <article class="prose">
+      <p class="eyebrow"><a href="professionnels.html">Professionnels de santé</a></p>
+      <h1>Dossier scientifique</h1>
+      <p>Ce dossier décrit ce que fait Sommelle, règle par règle, et sur quelles recommandations chaque règle s'appuie. Il s'adresse aux médecins, psychologues, pharmaciens et autres soignants qui souhaitent savoir précisément ce que l'application propose à leurs patients avant de la conseiller, ou nous aider à l'améliorer.</p>
+      <p>Tout ce qui est écrit ici correspond au fonctionnement réel de l'application. Les valeurs chiffrées sont rassemblées à un seul endroit du code source, qui est public.</p>
+
+      <div class="actions no-print">
+        <button class="btn btn-primary" type="button" onclick="window.print()">Imprimer ce dossier</button>
+      </div>
+
+      <div class="callout">
+        <p><strong>Statut.</strong> Sommelle est un outil d'accompagnement et d'éducation, pas un dispositif médical. Elle ne pose aucun diagnostic, ne remplace pas une consultation et ne revendique aucun effet thérapeutique propre. Son efficacité n'a pas été évaluée dans une étude clinique.</p>
+      </div>
+
+      <nav class="toc" aria-label="Sommaire du dossier">
+        <h2>Sommaire</h2>
+        <ol>
+          <li><a href="#tcci">La TCC-I en bref</a></li>
+          <li><a href="#deroule">Déroulé du programme</a></li>
+          <li><a href="#agenda">L'agenda du sommeil</a></li>
+          <li><a href="#restriction">La fenêtre de sommeil (restriction du temps au lit)</a></li>
+          <li><a href="#stimulus">Le contrôle du stimulus</a></li>
+          <li><a href="#cognitif">Les exercices cognitifs</a></li>
+          <li><a href="#securite">Sécurité et orientation</a></li>
+          <li><a href="#suivi">Suivi : bilan avant/après et résumé pour le médecin</a></li>
+          <li><a href="#limites">Ce que Sommelle ne fait pas, et points à valider</a></li>
+          <li><a href="#sources">Sources</a></li>
+          <li><a href="#retours">Nous faire un retour</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="tcci">1. La TCC-I en bref</h2>
+      <p>La thérapie cognitivo-comportementale de l'insomnie (TCC-I) est le traitement de première intention de l'insomnie chronique de l'adulte, avant les hypnotiques, selon les recommandations européennes (2023) et américaines (2021). Elle associe plusieurs composantes : agenda du sommeil, restriction du temps au lit, contrôle du stimulus, travail sur les pensées et éducation au sommeil.</p>
+      <p>Les versions numériques de la TCC-I sont efficaces dans les essais, avec des effets plus faibles sans soutien humain. Le principal enjeu est que le patient aille au bout du programme : c'est ce qui guide la conception de Sommelle (saisie rapide, aucun mécanisme culpabilisant).</p>
+
+      <h2 id="deroule">2. Déroulé du programme</h2>
+      <table>
+        <thead><tr><th>Semaine</th><th>Ce que vit le patient</th></tr></thead>
+        <tbody>
+          <tr><td>Avant de commencer</td><td>Questionnaire d'entrée de 2 à 3 minutes (sécurité et profil), qui oriente vers l'un des trois parcours décrits en section 7.</td></tr>
+          <tr><td>0</td><td>Semaine d'observation : agenda du sommeil chaque matin, sans aucune consigne contraignante.</td></tr>
+          <tr><td>1</td><td>Première fenêtre de sommeil (heures de coucher et de lever) et consignes de contrôle du stimulus.</td></tr>
+          <tr><td>2 à 5</td><td>Ajustement de la fenêtre chaque semaine ; un exercice cognitif nouveau se débloque chaque semaine.</td></tr>
+          <tr><td>6</td><td>Bilan avant/après.</td></tr>
+          <tr><td>Ensuite</td><td>Maintien : le patient peut continuer l'agenda, la fenêtre continue de s'ajuster.</td></tr>
+        </tbody>
+      </table>
+      <p>Une nuit oubliée peut être remplie jusqu'à 48 heures après. Il n'y a ni score quotidien, ni série de jours à maintenir, ni couleur rouge : une mauvaise semaine est présentée comme une information, jamais comme un échec.</p>
+
+      <h2 id="agenda">3. L'agenda du sommeil</h2>
+      <p>L'agenda reprend la version Core du Consensus Sleep Diary (Carney et al., 2012). Chaque matin, le patient indique :</p>
+      <ul>
+        <li>l'heure de mise au lit et l'heure d'extinction de la lumière ;</li>
+        <li>le temps mis à s'endormir ;</li>
+        <li>le nombre et la durée totale des éveils nocturnes ;</li>
+        <li>l'heure du réveil final et l'heure de sortie du lit ;</li>
+        <li>la qualité ressentie de la nuit.</li>
+      </ul>
+      <p>Les durées sont <strong>estimées</strong> parmi des choix simples (« moins de 5 min », « 15 min », « 30 min »…), jamais chronométrées : demander des minutes exactes pousserait à regarder l'heure la nuit, ce qui entretient l'insomnie (Tang et al., 2007). La saisie prend une vingtaine de secondes. L'application vérifie la cohérence des heures et signale les incohérences sans bloquer le patient.</p>
+
+      <h3>Calculs à partir de l'agenda</h3>
+      <ul>
+        <li><strong>Temps au lit</strong> = sortie du lit − mise au lit.</li>
+        <li><strong>Temps de sommeil</strong> = (réveil final − extinction) − temps d'endormissement − éveils nocturnes.</li>
+        <li><strong>Efficacité du sommeil</strong> = temps de sommeil ÷ temps au lit.</li>
+        <li><strong>Efficacité d'une semaine</strong> = somme des temps de sommeil ÷ somme des temps au lit. Chaque nuit pèse donc selon sa durée.</li>
+      </ul>
+      <p>Le temps passé au lit avant d'éteindre compte dans le temps au lit mais pas dans le sommeil, ce qui rejoint la consigne de réserver le lit au sommeil.</p>
+
+      <h2 id="restriction">4. La fenêtre de sommeil (restriction du temps au lit)</h2>
+      <p>Le principe (Spielman et al., 1987) : réduire temporairement le temps passé au lit au temps réellement dormi, pour consolider le sommeil, puis l'élargir progressivement.</p>
+      <table>
+        <thead><tr><th>Règle</th><th>Valeur dans Sommelle</th></tr></thead>
+        <tbody>
+          <tr><td>Durée d'observation avant toute restriction</td><td>7 jours</td></tr>
+          <tr><td>Nuits renseignées nécessaires</td><td>Au moins 5 sur 7, sinon la fenêtre est maintenue et le patient en est informé</td></tr>
+          <tr><td>Fenêtre initiale</td><td>Temps de sommeil moyen de la semaine d'observation, arrondi au quart d'heure supérieur</td></tr>
+          <tr><td>Durée minimale</td><td>5 h 30 ; 6 h pour les personnes exposées à un risque en cas de somnolence ; jamais sous 5 h, quel que soit le réglage</td></tr>
+          <tr><td>Durée maximale</td><td>9 h</td></tr>
+          <tr><td>Point d'ancrage</td><td>Heure de lever fixe, choisie par le patient, 7 jours sur 7 ; l'heure de coucher en découle</td></tr>
+          <tr><td>Ajustement chaque semaine</td><td>Efficacité ≥ 85 % : +15 min ; &lt; 80 % : −15 min (sans passer sous le minimum) ; entre les deux : inchangée</td></tr>
+          <tr><td>À partir de 65 ans</td><td>Seuils abaissés de 5 points (80 % et 75 %), le sommeil étant naturellement plus fragmenté</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Exemple</h3>
+      <p>Pendant la semaine d'observation, une patiente de 50 ans passe en moyenne 8 h 30 au lit et dort 5 h 50 : son efficacité est de 69 %. Sa fenêtre initiale est de 6 h (5 h 50 arrondi au quart d'heure supérieur). Elle choisit de se lever à 6 h 45 : elle se couchera à 0 h 45.</p>
+      <p>La semaine suivante, elle dort 88 % du temps passé au lit. La fenêtre s'allonge de 15 minutes : coucher à 0 h 30. Si son efficacité était restée entre 80 et 85 %, la fenêtre n'aurait pas bougé.</p>
+
+      <h3>Précautions</h3>
+      <p>La restriction entraîne une somnolence diurne transitoire, mesurable objectivement (Kyle et al., 2014). Un avertissement sur la conduite et les activités dangereuses s'affiche au début du programme. La restriction n'est jamais proposée dans les situations listées en section 7.</p>
+
+      <h2 id="stimulus">5. Le contrôle du stimulus</h2>
+      <p>Le contrôle du stimulus (Bootzin, 1972) vise à réassocier le lit au sommeil. Dans Sommelle, il passe par trois éléments :</p>
+      <ul>
+        <li>une <strong>heure de lever fixe</strong>, la même 7 jours sur 7, même après une mauvaise nuit ;</li>
+        <li>une <strong>heure de coucher</strong> donnée par la fenêtre de sommeil, avec un rappel le soir qui en explique la raison ;</li>
+        <li>un bouton <strong>« Je n'arrive pas à dormir »</strong> qui ouvre, la nuit, un écran presque noir aux couleurs chaudes et à luminosité réduite, sans heure ni chiffre. Il rappelle la consigne : se lever, aller dans une autre pièce, faire quelque chose de calme loin des écrans, revenir au lit quand le sommeil vient. Il se ferme seul au bout d'une minute et demie.</li>
+      </ul>
+      <p>Les autres consignes classiques (réserver le lit au sommeil, éviter les siestes ou les limiter à une sieste courte avant 15 h) ne sont pas encore présentées dans l'application : elles sont à rappeler en consultation.</p>
+
+      <h2 id="cognitif">6. Les exercices cognitifs</h2>
+      <p>Cinq exercices courts (environ cinq minutes chacun) se débloquent au fil du programme. Ils restent accessibles une fois débloqués.</p>
+      <table>
+        <thead><tr><th>Semaine</th><th>Exercice</th><th>Ce que fait le patient</th><th>Technique</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>Les idées sur le sommeil</td><td>Repère cinq croyances fréquentes (« il me faut 8 heures », « je dois rattraper au lit »…) et lit une version plus nuancée de chacune</td><td>Restructuration cognitive des croyances dysfonctionnelles (Morin)</td></tr>
+          <tr><td>2</td><td>Mettre sa journée au repos</td><td>En début de soirée, note ses préoccupations et la prochaine petite action pour chacune, puis range la feuille</td><td>Temps de décompression et « inquiétude constructive » (Carney et Waters, 2006)</td></tr>
+          <tr><td>3</td><td>Arrêter de chercher le sommeil</td><td>Au lit, garde tranquillement les yeux ouverts dans le noir au lieu de chercher à dormir</td><td>Intention paradoxale (Espie et Lindsay, 1985)</td></tr>
+          <tr><td>4</td><td>Revenir au plus probable</td><td>Répond à quatre questions sur ce qu'il craint pour le lendemain et ce qui s'est réellement passé les autres fois</td><td>Décatastrophisation</td></tr>
+          <tr><td>5</td><td>Relâcher le corps</td><td>Contracte puis relâche six groupes musculaires, en soirée</td><td>Relaxation musculaire progressive (Jacobson)</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="securite">7. Sécurité et orientation</h2>
+      <p>Le questionnaire d'entrée oriente vers l'un de trois parcours : <strong>programme complet</strong>, <strong>programme sans restriction</strong> (contrôle du stimulus, exercices cognitifs, éducation), ou <strong>orientation vers un médecin</strong> sans programme.</p>
+      <table>
+        <thead><tr><th>Situation déclarée</th><th>Conduite de l'application</th></tr></thead>
+        <tbody>
+          <tr><td>Ronflements forts avec pauses respiratoires constatées, ou somnolence marquée dans la journée</td><td>Pas de restriction ; invitation à consulter (apnée du sommeil possible)</td></tr>
+          <tr><td>Trouble bipolaire, épilepsie</td><td>Pas de restriction ; invitation à en parler au médecin traitant</td></tr>
+          <tr><td>Grossesse</td><td>Pas de restriction</td></tr>
+          <tr><td>Conduite professionnelle, machines dangereuses, métier de sécurité</td><td>Restriction avec durée minimale relevée à 6 h et avertissement renforcé, ou pas de restriction, au choix du patient</td></tr>
+          <tr><td>Horaires très tardifs avec un sommeil normal une fois endormi</td><td>Pas de restriction ; signalement d'un possible retard de phase et invitation à consulter</td></tr>
+          <tr><td>Travail posté ou de nuit, nuits interrompues par un tiers (nourrisson, proche malade), moins de 18 ans</td><td>Hors du champ de l'application ; orientation</td></tr>
+          <tr><td>Détresse exprimée</td><td>Mise en avant du 3114 (prévention du suicide), présent en permanence dans l'application</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="suivi">8. Suivi : bilan avant/après et résumé pour le médecin</h2>
+      <h3>Bilan avant/après</h3>
+      <p>À partir de la semaine 6, l'application compare la semaine d'observation aux 7 dernières nuits : temps d'endormissement, éveils nocturnes, temps de sommeil, efficacité et qualité ressentie. L'évolution est écrite en toutes lettres : « En amélioration », « Stable » ou « En recul ».</p>
+      <p>Une question sur la gêne ressentie dans la journée (de 0 à 4) est posée au début et à la fin du programme. <strong>Ce n'est pas une échelle validée.</strong> L'Index de sévérité de l'insomnie (ISI) serait l'outil de référence, mais il est soumis à licence et n'est pas intégré à ce jour.</p>
+
+      <h3>Résumé pour le médecin</h3>
+      <p>Le patient peut vous montrer un résumé directement à l'écran, ou vous le transmettre :</p>
+      <ul>
+        <li><strong>en PDF</strong> : parcours suivi, fenêtre actuelle, tableau semaine par semaine, bilan avant/après et détail des 28 dernières nuits ;</li>
+        <li><strong>en tableur</strong> (fichier CSV, lisible dans Excel ou LibreOffice) : l'agenda complet.</li>
+      </ul>
+      <p>Ces fichiers sont créés sur le téléphone et c'est le patient qui choisit de les partager (messagerie, impression…). Sommelle n'a aucun serveur et ne transmet rien d'elle-même.</p>
+
+      <h2 id="limites">9. Ce que Sommelle ne fait pas, et points à valider</h2>
+      <ul>
+        <li>Elle ne pose pas de diagnostic d'insomnie ni d'autre trouble du sommeil.</li>
+        <li>Elle ne gère pas la réduction ou l'arrêt des hypnotiques, qui reste à encadrer par le médecin.</li>
+        <li>Elle ne propose pas de suivi par un professionnel : elle peut en revanche accompagner un suivi existant, grâce au résumé.</li>
+        <li>Elle ne présente pas encore toutes les consignes d'hygiène du sommeil et de contrôle du stimulus (voir section 5).</li>
+        <li>Son efficacité propre n'a pas été évaluée dans une étude clinique.</li>
+      </ul>
+      <p>Plusieurs paramètres sont des choix de conception raisonnés plutôt que des valeurs établies. Nous souhaitons les faire relire par des professionnels du sommeil :</p>
+      <ul>
+        <li>la durée minimale de 5 h 30 et les seuils d'ajustement, notamment l'abaissement à partir de 65 ans ;</li>
+        <li>le calcul de l'efficacité hebdomadaire sur les totaux plutôt qu'en moyenne des nuits, et l'arrondi supérieur de la fenêtre initiale ;</li>
+        <li>la durée maximale de 9 h ;</li>
+        <li>le contenu des exercices cognitifs et l'ordre dans lequel ils se débloquent ;</li>
+        <li>la question sur la gêne diurne, en attendant une échelle validée ;</li>
+        <li>les règles d'orientation et la formulation des messages, dont l'avertissement sur la somnolence et le moment où il s'affiche.</li>
+      </ul>
+
+      <h2 id="sources">10. Sources</h2>
+      <ul class="refs">
+        <li>Riemann D. et al. The European Insomnia Guideline: an update on the diagnosis and treatment of insomnia 2023. <em>J Sleep Res</em>, 2023.</li>
+        <li>Edinger J.D. et al. Behavioral and psychological treatments for chronic insomnia disorder in adults: an American Academy of Sleep Medicine clinical practice guideline. <em>J Clin Sleep Med</em>, 2021.</li>
+        <li>Zachariae R. et al. Efficacy of internet-delivered cognitive-behavioral therapy for insomnia: a systematic review and meta-analysis of randomized controlled trials. <em>Sleep Med Rev</em>, 2016.</li>
+        <li>Soh H.L. et al. Efficacy of digital cognitive behavioural therapy for insomnia: a meta-analysis of randomised controlled trials. <em>Sleep Med Rev</em>, 2020.</li>
+        <li>Carney C.E. et al. The Consensus Sleep Diary: standardizing prospective sleep self-monitoring. <em>Sleep</em>, 2012.</li>
+        <li>Spielman A.J., Saskin P., Thorpy M.J. Treatment of chronic insomnia by restriction of time in bed. <em>Sleep</em>, 1987.</li>
+        <li>Kyle S.D. et al. Sleep restriction therapy for insomnia is associated with reduced objective total sleep time, increased daytime somnolence, and objectively impaired vigilance. <em>Sleep</em>, 2014.</li>
+        <li>Bootzin R.R. Stimulus control treatment for insomnia. <em>Proceedings of the American Psychological Association</em>, 1972.</li>
+        <li>Morin C.M., Vallières A., Ivers H. Dysfunctional Beliefs and Attitudes about Sleep (DBAS): validation of a brief version (DBAS-16). <em>Sleep</em>, 2007.</li>
+        <li>Carney C.E., Waters W.F. Effects of a structured problem-solving procedure on pre-sleep cognitive arousal in college students with insomnia. <em>Behav Sleep Med</em>, 2006.</li>
+        <li>Espie C.A., Lindsay W.R. Paradoxical intention in the treatment of chronic insomnia. <em>Behav Res Ther</em>, 1985.</li>
+        <li>Tang N.K.Y., Schmidt D.A., Harvey A.G. Sleeping with the enemy: clock monitoring in the maintenance of insomnia. <em>J Behav Ther Exp Psychiatry</em>, 2007.</li>
+        <li>Baron K.G. et al. Orthosomnia: are some patients taking the quantified self too far? <em>J Clin Sleep Med</em>, 2017.</li>
+      </ul>
+
+      <h2 id="retours">11. Nous faire un retour</h2>
+      <p>Vos remarques sur le protocole, les seuils ou les formulations sont précieuses, que vous soyez médecin du sommeil, psychologue formé à la TCC-I, généraliste ou pharmacien. Vous pouvez les déposer sur <a href="https://github.com/Relthdrarxash/sommelle/issues">la page de suivi du projet</a> (un compte GitHub gratuit est nécessaire).</p>
+      <p class="small">Pour les personnes qui souhaitent vérifier le fonctionnement dans le code : toutes les valeurs de ce dossier sont regroupées dans le fichier <code>ProtocolConfig.kt</code> du <a href="https://github.com/Relthdrarxash/sommelle">code source</a>, avec un numéro de version modifié à chaque changement.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="./">Accueil</a>
+        <a href="professionnels.html">Professionnels de santé</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="https://github.com/Relthdrarxash/sommelle">Code source</a>
+      </div>
+      <p>Sommelle est un logiciel libre distribué sous licence GNU GPL v3.0. Ce n'est pas un dispositif médical.</p>
+    </div>
+  </footer>
+</body>
+</html>

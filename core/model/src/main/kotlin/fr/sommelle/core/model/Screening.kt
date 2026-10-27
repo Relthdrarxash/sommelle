@@ -13,7 +13,7 @@ enum class AgeBand {
 
 /**
  * Réponses au questionnaire d'entrée. Chaque champ correspond à une ligne du tableau
- * « Sécurité » de documentation/protocole.md.
+ * « Sécurité et orientation » de docs/protocole.html.
  */
 data class ScreeningAnswers(
     val ageBand: AgeBand,

@@ -37,7 +37,7 @@ private data class Component(
 object DefaultComponents {
     private val inProgram: (ScreeningResult) -> Boolean = { it.pathway != Pathway.OUT_OF_SCOPE }
 
-    /** Ordre d'introduction d'documentation/protocole.md, section 3 (à valider). */
+    /** Ordre d'introduction d'docs/protocole.html, section 2 (à valider). */
     val ALL: List<ProtocolComponent> = listOf(
         Component(ComponentId.SLEEP_EDUCATION, activationWeek = 0) { true },
         Component(ComponentId.SLEEP_DIARY, activationWeek = 0, eligibility = inProgram),

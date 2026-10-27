@@ -10,7 +10,7 @@ Les retours, signalements et propositions sont les bienvenus, en particulier de 
 ./gradlew :app:assembleDebug   # application de développement
 ```
 
-Les règles cliniques vivent dans `core:protocol`, en pur Kotlin. Toute modification d'une valeur de `ProtocolConfig` doit incrémenter son numéro de version et être reportée dans [documentation/protocole.md](documentation/protocole.md).
+Les règles cliniques vivent dans `core:protocol`, en pur Kotlin. Toute modification d'une valeur de `ProtocolConfig` doit incrémenter son numéro de version et être reportée dans le dossier scientifique (`docs/protocole.html`).
 
 ## Intégration continue
 
