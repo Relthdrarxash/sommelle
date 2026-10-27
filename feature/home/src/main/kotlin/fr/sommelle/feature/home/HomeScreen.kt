@@ -165,7 +165,7 @@ private fun TimeTile(label: String, value: String, modifier: Modifier) {
     Surface(modifier = modifier, shape = MaterialTheme.shapes.medium, color = Color.White.copy(alpha = 0.12f), contentColor = SommelleColors.Cream) {
         Column(Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
             Text(label, style = MaterialTheme.typography.bodySmall, color = SommelleColors.LavenderOnNight)
-            Text(value, style = MaterialTheme.typography.displaySmall)
+            Text(value, style = MaterialTheme.typography.headlineMedium)
         }
     }
 }
