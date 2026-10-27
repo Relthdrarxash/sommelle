@@ -49,7 +49,17 @@ fun HomeScreen(
     val viewModel: HomeViewModel = viewModel { HomeViewModel(repository) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
+    HomeContent(s, onFillNight, onChooseWakeTime, onCantSleep)
+}
 
+/** Accueil sans état ni dépendance : affiché tel quel dans les captures d'écran de la documentation. */
+@Composable
+fun HomeContent(
+    s: HomeState,
+    onFillNight: (LocalDate) -> Unit,
+    onChooseWakeTime: () -> Unit,
+    onCantSleep: () -> Unit,
+) {
     val diaryAvailable = s.pathway != Pathway.OUT_OF_SCOPE
     ScreenScaffold(
         bottom = {

@@ -43,31 +43,51 @@ fun OnboardingScreen(repository: SommelleRepository, onDone: () -> Unit) {
 
     BackHandler(enabled = state != OnboardingState.Welcome) { viewModel.back() }
 
+    OnboardingContent(
+        state = state,
+        onStart = viewModel::start,
+        onChooseAge = viewModel::chooseAge,
+        onAnswer = viewModel::answer,
+        onBack = viewModel::back,
+        onConfirm = { viewModel.confirm(onDone) },
+    )
+}
+
+/** Questionnaire d'entrée sans état ni dépendance : affiché tel quel dans les captures de la documentation. */
+@Composable
+fun OnboardingContent(
+    state: OnboardingState,
+    onStart: () -> Unit,
+    onChooseAge: (AgeBand) -> Unit,
+    onAnswer: (Boolean) -> Unit,
+    onBack: () -> Unit,
+    onConfirm: () -> Unit,
+) {
     when (val s = state) {
-        OnboardingState.Welcome -> Welcome(onStart = viewModel::start)
+        OnboardingState.Welcome -> Welcome(onStart = onStart)
         is OnboardingState.Questions -> if (s.flow.isAgeStep) {
             AgeStep(
                 step = s.flow.stepNumber,
                 total = s.flow.totalSteps,
                 selected = s.flow.answers?.ageBand,
-                onBack = viewModel::back,
-                onSelect = viewModel::chooseAge,
+                onBack = onBack,
+                onSelect = onChooseAge,
             )
         } else {
             QuestionStep(
                 question = checkNotNull(s.flow.current),
                 step = s.flow.stepNumber,
                 total = s.flow.totalSteps,
-                onBack = viewModel::back,
-                onAnswer = viewModel::answer,
+                onBack = onBack,
+                onAnswer = onAnswer,
             )
         }
         is OnboardingState.Result -> ResultStep(
             pathway = s.result.pathway,
             referrals = s.result.referrals,
             notices = s.result.notices,
-            onBack = viewModel::back,
-            onConfirm = { viewModel.confirm(onDone) },
+            onBack = onBack,
+            onConfirm = onConfirm,
         )
     }
 }

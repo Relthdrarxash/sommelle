@@ -46,6 +46,12 @@ fun WeekScreen(repository: SommelleRepository) {
     val viewModel: WeekViewModel = viewModel { WeekViewModel(repository) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
+    WeekContent(s)
+}
+
+/** Bilan sans état ni dépendance : affiché tel quel dans les captures de la documentation. */
+@Composable
+fun WeekContent(s: WeekState) {
     var showHow by rememberSaveable { mutableStateOf(false) }
 
     ScreenScaffold {

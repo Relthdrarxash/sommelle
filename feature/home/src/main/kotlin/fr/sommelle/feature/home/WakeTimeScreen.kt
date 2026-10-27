@@ -42,23 +42,41 @@ fun WakeTimeScreen(repository: SommelleRepository, onDone: () -> Unit) {
     val current = minutes ?: return
     val time = LocalTime.MIDNIGHT.plusMinutes(current.toLong())
 
-    ScreenScaffold(
-        bottom = {
-            SommelleButton(stringResource(R.string.wake_confirm), onClick = {
-                scope.launch {
-                    repository.setWakeTime(time)
-                    onDone()
-                }
-            })
+    WakeTimeContent(
+        time = time,
+        suggested = suggested,
+        onMinus = { minutes = Math.floorMod(current - DiaryChoices.TIME_STEP_MINUTES.toInt(), 1440) },
+        onPlus = { minutes = Math.floorMod(current + DiaryChoices.TIME_STEP_MINUTES.toInt(), 1440) },
+        onConfirm = {
+            scope.launch {
+                repository.setWakeTime(time)
+                onDone()
+            }
         },
+        onBack = onDone,
+    )
+}
+
+/** Choix de l'heure de lever sans état ni dépendance. */
+@Composable
+fun WakeTimeContent(
+    time: LocalTime,
+    suggested: Boolean,
+    onMinus: () -> Unit,
+    onPlus: () -> Unit,
+    onConfirm: () -> Unit,
+    onBack: () -> Unit,
+) {
+    ScreenScaffold(
+        bottom = { SommelleButton(stringResource(R.string.wake_confirm), onClick = onConfirm) },
     ) {
-        BackPill(onDone)
+        BackPill(onBack)
         ScreenTitle(stringResource(R.string.wake_title))
         Text(stringResource(R.string.wake_text), style = MaterialTheme.typography.bodyLarge)
         TimeStepper(
             value = FrenchFormat.time(time),
-            onMinus = { minutes = Math.floorMod(current - DiaryChoices.TIME_STEP_MINUTES.toInt(), 1440) },
-            onPlus = { minutes = Math.floorMod(current + DiaryChoices.TIME_STEP_MINUTES.toInt(), 1440) },
+            onMinus = onMinus,
+            onPlus = onPlus,
             footer = if (suggested) {
                 { InfoLine(SommelleIcons.History, stringResource(R.string.wake_suggested)) }
             } else {

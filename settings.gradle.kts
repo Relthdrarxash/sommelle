@@ -33,3 +33,6 @@ include(":feature:home")
 include(":feature:diary")
 include(":feature:week")
 include(":feature:night")
+
+// Captures d'écran de la documentation, générées par la CI (docs/captures).
+include(":screenshots")

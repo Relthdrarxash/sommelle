@@ -60,30 +60,35 @@ fun DiaryScreen(repository: SommelleRepository, nightOf: LocalDate, onClose: () 
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
 
-    val goBack = { if (!viewModel.back()) onClose() }
-    BackHandler(onBack = goBack)
+    BackHandler { if (!viewModel.back()) onClose() }
+    DiaryContent(s, viewModel, onClose)
+}
 
+/** Agenda sans état ni dépendance : affiché tel quel dans les captures de la documentation. */
+@Composable
+fun DiaryContent(s: DiaryState, actions: DiaryActions, onClose: () -> Unit) {
+    val goBack = { if (!actions.back()) onClose() }
     when (s.mode) {
         DiaryMode.SUMMARY -> Summary(
             state = s,
-            onEdit = viewModel::editFromSummary,
-            onConfirm = { viewModel.save(onClose) },
-            onGuided = viewModel::guidedFromStart,
+            onEdit = actions::editFromSummary,
+            onConfirm = { actions.save(onClose) },
+            onGuided = actions::guidedFromStart,
             onBack = onClose,
-            onFixIssue = { step -> viewModel.dismissIssue(); viewModel.editFromSummary(step) },
+            onFixIssue = { step -> actions.dismissIssue(); actions.editFromSummary(step) },
         )
         DiaryMode.GUIDED -> Guided(
             state = s,
-            viewModel = viewModel,
+            actions = actions,
             onBack = goBack,
-            onNext = { viewModel.next(onClose) },
-            onFixIssue = { step -> viewModel.dismissIssue(); viewModel.editFromSummary(step) },
+            onNext = { actions.next(onClose) },
+            onFixIssue = { step -> actions.dismissIssue(); actions.editFromSummary(step) },
         )
     }
 }
 
 @Composable
-private fun Guided(state: DiaryState, viewModel: DiaryViewModel, onBack: () -> Unit, onNext: () -> Unit, onFixIssue: (DiaryStep) -> Unit) {
+private fun Guided(state: DiaryState, actions: DiaryActions, onBack: () -> Unit, onNext: () -> Unit, onFixIssue: (DiaryStep) -> Unit) {
     val draft = state.draft
     val isLast = state.step.next == null
     ScreenScaffold(
@@ -105,15 +110,15 @@ private fun Guided(state: DiaryState, viewModel: DiaryViewModel, onBack: () -> U
         StepProgress(state.step.number, DiaryStep.total)
         state.blockingIssue?.let { IssueCard(it, onFixIssue) }
         when (state.step) {
-            DiaryStep.BED_TIME -> TimeQuestion(R.string.diary_q_bed, R.string.diary_h_bed, draft, TimeField.BED_TIME, viewModel)
-            DiaryStep.LIGHTS_OUT -> TimeQuestion(R.string.diary_q_lights, R.string.diary_h_lights, draft, TimeField.LIGHTS_OUT, viewModel)
+            DiaryStep.BED_TIME -> TimeQuestion(R.string.diary_q_bed, R.string.diary_h_bed, draft, TimeField.BED_TIME, actions)
+            DiaryStep.LIGHTS_OUT -> TimeQuestion(R.string.diary_q_lights, R.string.diary_h_lights, draft, TimeField.LIGHTS_OUT, actions)
             DiaryStep.SLEEP_ONSET -> {
                 Question(R.string.diary_q_onset, R.string.diary_h_onset)
                 ChoiceGrid(
                     options = DiaryChoices.sleepOnsetMinutes,
                     selected = draft.sleepOnsetMinutes,
                     label = { onsetLabel(it) },
-                    onSelect = viewModel::sleepOnset,
+                    onSelect = actions::sleepOnset,
                 )
             }
             DiaryStep.AWAKENINGS -> {
@@ -122,7 +127,7 @@ private fun Guided(state: DiaryState, viewModel: DiaryViewModel, onBack: () -> U
                     options = DiaryChoices.awakeningCounts,
                     selected = draft.awakeningCount,
                     label = { countLabel(it) },
-                    onSelect = viewModel::awakeningCount,
+                    onSelect = actions::awakeningCount,
                     columns = 3,
                 )
                 if (draft.awakeningCount > 0) {
@@ -131,19 +136,19 @@ private fun Guided(state: DiaryState, viewModel: DiaryViewModel, onBack: () -> U
                         options = DiaryChoices.awakeMinutes,
                         selected = draft.awakeMinutes,
                         label = { awakeLabel(it) },
-                        onSelect = viewModel::awakeMinutes,
+                        onSelect = actions::awakeMinutes,
                     )
                 }
             }
-            DiaryStep.FINAL_WAKE -> TimeQuestion(R.string.diary_q_final, R.string.diary_h_final, draft, TimeField.FINAL_WAKE, viewModel)
-            DiaryStep.OUT_OF_BED -> TimeQuestion(R.string.diary_q_out, null, draft, TimeField.OUT_OF_BED, viewModel)
+            DiaryStep.FINAL_WAKE -> TimeQuestion(R.string.diary_q_final, R.string.diary_h_final, draft, TimeField.FINAL_WAKE, actions)
+            DiaryStep.OUT_OF_BED -> TimeQuestion(R.string.diary_q_out, null, draft, TimeField.OUT_OF_BED, actions)
             DiaryStep.QUALITY -> {
                 Question(R.string.diary_q_quality, null)
                 ChoiceGrid(
                     options = SleepQuality.entries,
                     selected = draft.quality,
                     label = { stringResource(it.label()) },
-                    onSelect = viewModel::quality,
+                    onSelect = actions::quality,
                     columns = 1,
                 )
             }
@@ -160,13 +165,13 @@ private fun Question(@StringRes title: Int, @StringRes hint: Int?) {
 }
 
 @Composable
-private fun TimeQuestion(@StringRes title: Int, @StringRes hint: Int?, draft: DiaryDraft, field: TimeField, viewModel: DiaryViewModel) {
+private fun TimeQuestion(@StringRes title: Int, @StringRes hint: Int?, draft: DiaryDraft, field: TimeField, actions: DiaryActions) {
     Question(title, hint)
     val source = draft.prefillSource
     TimeStepper(
         value = FrenchFormat.time(draft.time(field)),
-        onMinus = { viewModel.shift(field, -DiaryChoices.TIME_STEP_MINUTES) },
-        onPlus = { viewModel.shift(field, DiaryChoices.TIME_STEP_MINUTES) },
+        onMinus = { actions.shift(field, -DiaryChoices.TIME_STEP_MINUTES) },
+        onPlus = { actions.shift(field, DiaryChoices.TIME_STEP_MINUTES) },
         footer = if (source != null) {
             { PrefillLine(source) }
         } else {

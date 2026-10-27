@@ -11,6 +11,16 @@ Chaque envoi sur `main` et chaque pull request lancent le workflow **CI** (`.git
 
 En cas d'échec, les rapports de tests et de lint sont joints à l'exécution (artefact `rapports`).
 
+## Captures d'écran
+
+Les captures de la documentation (`docs/captures`) sont produites par le module `:screenshots`, qui affiche les écrans avec [Paparazzi](https://github.com/cashapp/paparazzi), sans téléphone ni émulateur. Le workflow **Captures d'écran** les régénère à chaque modification des écrans sur `main` et les enregistre dans le dépôt quand elles changent. Il peut aussi être lancé à la main depuis l'onglet Actions.
+
+Pour ajouter une capture : écrire une méthode dans `screenshots/src/test/kotlin/fr/sommelle/screenshots/ScreensTest.kt`. L'image prend le nom de la méthode (`bilan()` donne `docs/captures/bilan.png`). Les écrans s'affichent à partir de leur version sans état (`HomeContent`, `DiaryContent`, etc.), avec des données d'exemple.
+
+Pour les générer localement : `./gradlew :screenshots:recordPaparazziDebug`.
+
+## Dépendances
+
 Dependabot propose chaque mois les mises à jour des dépendances Gradle et des actions GitHub.
 
 ## Publication
