@@ -1,18 +1,39 @@
 name: Publication
 
-# Une étiquette v1.2.3 poussée sur GitHub produit un APK signé et une version publiée.
+# Deux façons de publier :
+#   - pousser une étiquette vX.Y.Z (git tag v1.2.0 && git push origin v1.2.0) ;
+#   - ou, sans terminal : onglet Actions > Publication > Run workflow, en saisissant le numéro (1.2.0).
+# Dans les deux cas :
+#   1. lance les tests,
+#   2. compile l'APK et le bundle (AAB) signés, numéro de version tiré de l'étiquette (v1.2.0 -> 10200),
+#   3. crée une version GitHub avec ces fichiers,
+#   4. envoie l'AAB sur la piste de test interne de Google Play (si le compte de service est configuré).
+# Le passage en production se fait à la main dans la Play Console, après vérification.
+
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Numéro de version à publier, par exemple 1.2.0 (l'étiquette v1.2.0 est créée)"
+        required: true
+        type: string
 
 permissions:
   contents: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
-    name: APK signé et version GitHub
+    name: APK signé, version GitHub et Google Play
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      PACKAGE_NAME: fr.sommelle
     steps:
       - uses: actions/checkout@v4
 
@@ -24,6 +45,18 @@ jobs:
           java-version: "17"
 
       - uses: gradle/actions/setup-gradle@v4
+
+      - name: Numéro de version depuis l'étiquette
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            tag="v${INPUT_VERSION#v}"
+          else
+            tag="$GITHUB_REF_NAME"
+          fi
+          echo "RELEASE_TAG=$tag" >> "$GITHUB_ENV"
+          bash scripts/version-from-tag.sh "$tag" | tee -a "$GITHUB_ENV"
 
       - name: Tests unitaires
         run: ./gradlew test
@@ -44,21 +77,55 @@ jobs:
           SOMMELLE_KEYSTORE_PASSWORD: ${{ secrets.SOMMELLE_KEYSTORE_PASSWORD }}
           SOMMELLE_KEY_ALIAS: ${{ secrets.SOMMELLE_KEY_ALIAS }}
           SOMMELLE_KEY_PASSWORD: ${{ secrets.SOMMELLE_KEY_PASSWORD }}
-          SOMMELLE_VERSION_NAME: ${{ github.ref_name }}
-          SOMMELLE_VERSION_CODE: ${{ github.run_number }}
+          SOMMELLE_VERSION_NAME: ${{ env.VERSION_NAME }}
+          SOMMELLE_VERSION_CODE: ${{ env.VERSION_CODE }}
         run: ./gradlew :app:assembleRelease :app:bundleRelease
 
       - name: Renommer les fichiers
         run: |
-          cp app/build/outputs/apk/release/app-release.apk "sommelle-${GITHUB_REF_NAME}.apk"
-          cp app/build/outputs/bundle/release/app-release.aab "sommelle-${GITHUB_REF_NAME}.aab"
-          sha256sum "sommelle-${GITHUB_REF_NAME}.apk" > "sommelle-${GITHUB_REF_NAME}.apk.sha256"
+          cp app/build/outputs/apk/release/app-release.apk "sommelle-${RELEASE_TAG}.apk"
+          cp app/build/outputs/bundle/release/app-release.aab "sommelle-${RELEASE_TAG}.aab"
+          sha256sum "sommelle-${RELEASE_TAG}.apk" > "sommelle-${RELEASE_TAG}.apk.sha256"
 
-      - name: Publier la version
+      - name: Publier la version GitHub
         uses: softprops/action-gh-release@v2
         with:
+          # Crée l'étiquette sur ce commit si elle n'existe pas encore (lancement manuel).
+          tag_name: ${{ env.RELEASE_TAG }}
+          target_commitish: ${{ github.sha }}
           generate_release_notes: true
           files: |
-            sommelle-${{ github.ref_name }}.apk
-            sommelle-${{ github.ref_name }}.apk.sha256
-            sommelle-${{ github.ref_name }}.aab
+            sommelle-${{ env.RELEASE_TAG }}.apk
+            sommelle-${{ env.RELEASE_TAG }}.apk.sha256
+            sommelle-${{ env.RELEASE_TAG }}.aab
+
+      - name: Vérifier la configuration Google Play
+        id: play
+        env:
+          PLAY_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -n "$PLAY_JSON" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Secret PLAY_SERVICE_ACCOUNT_JSON absent : envoi à Google Play ignoré. L'AAB est dans la version GitHub."
+          fi
+
+      - name: Préparer les notes de version
+        if: steps.play.outputs.enabled == 'true'
+        run: bash scripts/play-whatsnew.sh "$VERSION_CODE"
+
+      - name: Envoyer sur Google Play (test interne)
+        if: steps.play.outputs.enabled == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: ${{ env.PACKAGE_NAME }}
+          releaseFiles: sommelle-${{ env.RELEASE_TAG }}.aab
+          releaseName: ${{ env.VERSION_NAME }}
+          track: internal
+          # « draft » tant que l'appli n'a jamais été publiée sur une piste ; « completed » ensuite.
+          # Réglable sans toucher au code : Settings > Secrets and variables > Actions > Variables.
+          status: ${{ vars.PLAY_RELEASE_STATUS || 'completed' }}
+          whatsNewDirectory: distribution/whatsnew
+          mappingFile: app/build/outputs/mapping/release/mapping.txt

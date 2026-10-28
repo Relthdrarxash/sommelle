@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "fr.sommelle"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "fr.sommelle"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         // En publication, la CI fournit le numéro et le nom de version (étiquette v1.2.3).
         versionCode = System.getenv("SOMMELLE_VERSION_CODE")?.toIntOrNull() ?: 1
         versionName = System.getenv("SOMMELLE_VERSION_NAME")?.removePrefix("v") ?: "0.1.0"

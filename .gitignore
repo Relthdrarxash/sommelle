@@ -17,3 +17,6 @@ screenshots/src/test/snapshots/
 keystore.properties
 /prive/
 
+
+# Notes de version générées pour Google Play
+distribution/
