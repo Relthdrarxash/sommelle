@@ -166,6 +166,39 @@ details p { color: var(--text-muted); }
 .refs li { margin-bottom: 0.7em; }
 button.btn { border: 0; cursor: pointer; font-family: inherit; }
 
+/* Schémas du dossier scientifique */
+:root { --fig-sleep: #2F3A6B; --fig-awake: #E8A33D; --fig-idle: #D6CFC2; --fig-bed: #E6E4F2; --fig-same: #ECE8E0; --fig-ink: var(--text); --fig-muted: var(--text-muted); --fig-grid: var(--line); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --fig-sleep: #8C9BD9; --fig-awake: #C98A2E; --fig-idle: #4A3D33; --fig-bed: #2E2840; --fig-same: #2A2019; }
+}
+.schema { margin: 1.5em 0 2em; }
+.schema-scroll { overflow-x: auto; }
+.schema svg.fig { display: block; width: 100%; min-width: 640px; height: auto; font-family: inherit; }
+.schema figcaption { font-size: 1rem; color: var(--text-muted); margin-top: 0.6em; }
+.fig .sleep { fill: var(--fig-sleep); }
+.fig .awake { fill: var(--fig-awake); }
+.fig .idle { fill: var(--fig-idle); }
+.fig .bed { fill: var(--fig-bed); stroke: var(--fig-sleep); stroke-width: 1.2; }
+.fig .down { fill: var(--fig-awake); opacity: 0.55; }
+.fig .same { fill: var(--fig-same); stroke: var(--fig-grid); }
+.fig .up { fill: var(--fig-sleep); opacity: 0.85; }
+.fig .grid { stroke: var(--fig-grid); stroke-width: 1; }
+.fig .mark { stroke: var(--fig-ink); stroke-width: 1.2; }
+.fig .anchor { stroke: var(--fig-ink); stroke-width: 2; stroke-dasharray: 5 4; }
+.fig .brace { fill: none; stroke: var(--fig-ink); stroke-width: 1.5; }
+.fig text { fill: var(--fig-ink); font-size: 14px; }
+.fig .tick, .fig .small { fill: var(--fig-muted); font-size: 13px; }
+.fig .lab, .fig .head { font-weight: 700; }
+.fig .val { font-size: 14px; }
+.fig .in { fill: #FFFDF9; font-weight: 700; font-size: 14px; }
+.fig .in2 { font-weight: 700; font-size: 15px; }
+.legende { list-style: none; padding: 0; margin: 0.8em 0 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 1rem; }
+.legende li { display: flex; align-items: center; gap: 8px; margin: 0; }
+.sw { display: inline-block; width: 22px; height: 14px; border-radius: 3px; }
+.sw-sleep { background: var(--fig-sleep); } .sw-awake { background: var(--fig-awake); } .sw-idle { background: var(--fig-idle); }
+.sw-bed { background: var(--fig-bed); border: 1px solid var(--fig-sleep); }
+@media print { .schema svg.fig { min-width: 0; } .schema { break-inside: avoid; } }
+
 @media print {
   .skip, .site-header, .site-footer, .no-print, .toc { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
